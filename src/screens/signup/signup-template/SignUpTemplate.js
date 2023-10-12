@@ -18,6 +18,7 @@ const SignUpTemplate = ({type}) => {
     <View style={{flex:1, paddingTop:'30%', backgroundColor:COLORS.bgSecondary}}>
         <Text>SignUpTemplate</Text>
         <Button title='verify' onPress={() => navigation.replace('Verification')}/>
+        <Button title='Login instead' onPress={() => navigation.replace('Login')}/>
     </View>
   )
 }

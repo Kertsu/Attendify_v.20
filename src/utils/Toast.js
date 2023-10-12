@@ -6,6 +6,5 @@ export const verificationSentMessage = () => {
       text2:'Please check your email address.',
       autoHide: true,
       visibilityTime:2500,
-      onPress: () => Toast.hide(),
   })
-  }
+}

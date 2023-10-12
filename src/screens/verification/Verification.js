@@ -37,9 +37,6 @@ const Verification = () => {
     }, 1000);
   };
   
-  
-
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       
