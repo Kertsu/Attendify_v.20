@@ -13,7 +13,7 @@ const OnBoarding = () => {
 
   const SkipButton = () => {
     return (
-      <TouchableOpacity onPress={() => navigation.replace("Login")}>
+      <TouchableOpacity onPress={() => navigation.replace("SignUp")}>
         <Text style={tabButton}>SKIP</Text>
       </TouchableOpacity>
     );

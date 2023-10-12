@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useRef} from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {Home, Login, OnBoarding, SignUp} from "../screens/";
+import {Home, Login, OnBoarding, SignUp, Verification} from "../screens/";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Stack = createNativeStackNavigator();
@@ -30,15 +30,17 @@ const StackGroup = () => {
 
   return (
     <Stack.Navigator >
-     {isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
+     {!isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
+      <Stack.Screen options={{headerShown:false}}  component={SignUp} name="SignUp" />
       <Stack.Screen options={{headerShown:false}} component={Login} name="Login" />
-      <Stack.Screen options={{headerShown:false}} component={SignUp} name="SignUp" />
+      <Stack.Screen options={{headerShown:false}} component={Verification} name="Verification" />
       <Stack.Screen options={{headerShown:true}} component={Home} name="Home" />
     </Stack.Navigator>
   );
 };
 
 const Navigation = () => {
+
   return (
     <NavigationContainer>
       <StackGroup />
