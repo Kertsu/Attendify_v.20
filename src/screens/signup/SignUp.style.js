@@ -9,8 +9,6 @@ export const screenStyle = {
     tabBarStyle: {
       backgroundColor: COLORS.white,
       paddingTop: Platform.OS == 'ios' ? '10%' : '5%',
-      borderBottomEndRadius: 30,
-      borderBottomStartRadius: 30,
       position: "absolute",
       top: 0,
       left: 0,

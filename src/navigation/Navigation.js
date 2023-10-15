@@ -30,7 +30,7 @@ const StackGroup = () => {
 
   return (
     <Stack.Navigator >
-     {!isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
+     {isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
       <Stack.Screen options={{headerShown:false}}  component={SignUp} name="SignUp" />
       <Stack.Screen options={{headerShown:false}} component={Login} name="Login" />
       <Stack.Screen options={{headerShown:false}} component={Verification} name="Verification" />
