@@ -32,12 +32,12 @@ const StackGroup = () => {
   }, []);
 
   return (
-      <Stack.Navigator >
-      {isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
-        <Stack.Screen options={{headerShown:false}}  component={SignUp} name="SignUp" />
-        <Stack.Screen options={{headerShown:false}} component={Login} name="Login" />
-        <Stack.Screen options={{headerShown:false}} component={Verification} name="Verification" />
-        <Stack.Screen options={{headerShown:true}} component={Home} name="Home" />
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+      {isFirstLaunch && (<Stack.Screen component={OnBoarding} name="OnBoarding" />)}
+        <Stack.Screen  component={SignUp} name="SignUp" />
+        <Stack.Screen component={Login} name="Login" />
+        <Stack.Screen component={Verification} name="Verification" />
+        <Stack.Screen component={Home} name="Home" />
       </Stack.Navigator>
   );
 };

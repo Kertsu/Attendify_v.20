@@ -24,11 +24,11 @@ const TabGroup = () => {
       } else{
         return <View style={styles.imageContainer({focused})}><Image style={styles.image} source={require('../../../assets/images/kurtd.jpg')}/></View>
       }
-    }, headerShown:false, tabBarShowLabel:false, tabBarStyle:{ elevation: 0, shadowOpacity: 0}
+    },tabBarShowLabel:false, tabBarStyle:{ elevation: 0, shadowOpacity: 0}, headerTitleAlign:'center'
   })}>
     <Tab.Screen name='Gatherings' component={Gatherings}/>
     <Tab.Screen name='Announcements' component={Announcements}/>
-    <Tab.Screen name='Profile' component={Profile}/>
+    <Tab.Screen name='Profile' options={{title:'My Profile'}} component={Profile}/>
   </Tab.Navigator>)
 }
 
