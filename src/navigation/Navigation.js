@@ -4,6 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {Home, Login, OnBoarding, SignUp, Verification} from "../screens/";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import { Image} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 const Stack = createNativeStackNavigator();
 
 const StackGroup = () => {
@@ -29,13 +32,13 @@ const StackGroup = () => {
   }, []);
 
   return (
-    <Stack.Navigator >
-     {isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
-      <Stack.Screen options={{headerShown:false}}  component={SignUp} name="SignUp" />
-      <Stack.Screen options={{headerShown:false}} component={Login} name="Login" />
-      <Stack.Screen options={{headerShown:false}} component={Verification} name="Verification" />
-      <Stack.Screen options={{headerShown:true}} component={Home} name="Home" />
-    </Stack.Navigator>
+      <Stack.Navigator >
+      {isFirstLaunch && (<Stack.Screen options={{headerShown:false}} component={OnBoarding} name="OnBoarding" />)}
+        <Stack.Screen options={{headerShown:false}}  component={SignUp} name="SignUp" />
+        <Stack.Screen options={{headerShown:false}} component={Login} name="Login" />
+        <Stack.Screen options={{headerShown:false}} component={Verification} name="Verification" />
+        <Stack.Screen options={{headerShown:true}} component={Home} name="Home" />
+      </Stack.Navigator>
   );
 };
 
