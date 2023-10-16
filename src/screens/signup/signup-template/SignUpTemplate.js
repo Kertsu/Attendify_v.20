@@ -8,6 +8,7 @@ import {
   Platform,
   Text,
   Button,
+  SafeAreaView,
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
@@ -28,14 +29,14 @@ const SignUpTemplate = ({ type }) => {
   const [churchId, setChurchId] = useState("");
   const [email, setEmail] = useState("");
   const [localeId, setLocaleId] = useState(1);
-  const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   const data = caviteDivisionWithKeys["CENTRAL DISTRICT"];
 
   return (
-    <View style={{ flex: 1, paddingTop: "27%" }}>
-      <KeyboardAvoidingView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, paddingTop: "27%" }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding': 'height'}>
         <ScrollView
+          showsVerticalScrollIndicator={false}
           style={{ backgroundColor: COLORS.bgSecondary, paddingHorizontal: 10 }}
         >
           <View
@@ -129,7 +130,7 @@ const SignUpTemplate = ({ type }) => {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-
+import caviteDivisionWithKeys from '../../../data';
+import { Text } from 'react-native';
 const Home = () => {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
+  return(
+    <>
+      <Text>Hell0</Text>
+    </>
   )
 }
 
 export default Home
+
+ 
