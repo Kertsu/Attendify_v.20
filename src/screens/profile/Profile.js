@@ -1,33 +1,159 @@
-import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { COLORS, SIZES } from '../../constants/theme'
-import { Ionicons } from '@expo/vector-icons';
-const Profile = () => {
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import React from "react";
+import { COLORS, SIZES } from "../../constants/theme";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { styles } from "./Profile.style";
+const Profile = ({ navigation }) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.container}>
-     <View style={{width:'100%', paddingVertical:20, paddingHorizontal:10, alignItems:'center'}}>
-        <View style={{width:'35%', aspectRatio:1/1 ,position:'relative'}}>
-          <Image style={{width:'40%', height:'100%',  aspectRatio:1/1, borderRadius:1000}} source={require('../../../assets/images/kurtd.jpg')} />
-          <TouchableOpacity style={{backgroundColor:COLORS.gray, aspectRatio:1/1, borderRadius:1000, position:'absolute', padding:4, bottom:0, right:4, justifyContent:'center', alignItems:'center'}}>
-            <View style={{aspectRatio:1/1, borderRadius:1000}}>
-            <Ionicons style={{textAlign:'center'}} name="camera" size={20} color={COLORS.textPrimary} />
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.container}
+    >
+      <View style={styles.secOne}>
+        <View style={styles.avatarContainer}>
+          <Image
+            style={styles.img}
+            source={require("../../../assets/images/kurtd.jpg")}
+          />
+          <TouchableOpacity style={styles.changePfp}>
+            <View style={styles.camIcon}>
+              <Ionicons
+                style={{ textAlign: "center" }}
+                name="camera"
+                size={20}
+                color={COLORS.textPrimary}
+              />
             </View>
           </TouchableOpacity>
         </View>
-     </View>
-     <View>
 
-     </View>
+        <View style={{ marginTop: "5%", alignItems: "center" }}>
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 3 }}>
+            <Text style={{ fontSize: SIZES.large }}>Kurtd Daniel Bigtas</Text>
+            <MaterialIcons
+              style={{ textAlign: "center" }}
+              name="verified"
+              size={15}
+              color={COLORS.bgPrimary}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 3,
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 5,
+              paddingHorizontal: "5%",
+              paddingVertical: "1%",
+              borderRadius: 5,
+            }}
+          >
+            <Ionicons name="desktop" size={20} color={COLORS.darkerGray} />
+            <Text style={{ color: COLORS.darkGray }}>Secretary</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.separator}></View>
+      <View style={styles.secTwo}>
+        <Text style={styles.secTitle}>Details</Text>
+
+        <View style={styles.detailsContainer}>
+          <View style={styles.infoWrapper}>
+            <MaterialCommunityIcons
+              name="at"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>kurtddbigtas@gmail.com</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <MaterialCommunityIcons
+              name="card-bulleted"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>21-00264KBI</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <MaterialCommunityIcons
+              name="map-marker-radius"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>Cavite Division</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <MaterialCommunityIcons
+              name="compass"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>West District</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <MaterialCommunityIcons
+              name="home"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>Cavite City</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <MaterialCommunityIcons
+              name="calendar-account"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>Member since 2023</Text>
+          </View>
+
+          <TouchableOpacity
+            style={{
+              alignSelf: "center",
+              width: "95%",
+              backgroundColor: COLORS.bgSecondary,
+              borderRadius: 5,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 5,
+              paddingVertical: 5,
+              marginTop: 10,
+            }}
+          >
+            <MaterialCommunityIcons
+              name="pencil"
+              size={24}
+              color={COLORS.bgPrimary}
+            />
+            <Text style={{ color: COLORS.bgPrimary, fontWeight: "bold" }}>
+              Edit Profile
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* <View style={{marginTop:10, alignSelf:'flex-start', paddingHorizontal:10}}>
+      <Text style={{fontSize:SIZES.large, fontWeight:'bold'}}>Account Settings</Text>
+      </View> */}
     </ScrollView>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
 
-const styles = StyleSheet.create({
-  container:{
-    backgroundColor:COLORS.white, 
-    display:'flex',
-    alignItems:'center'
-  }
-})
+
