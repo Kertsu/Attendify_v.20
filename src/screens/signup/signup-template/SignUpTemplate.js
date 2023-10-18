@@ -19,7 +19,6 @@ import { COLORS, SIZES } from "../../../constants/theme";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { SelectList } from "react-native-dropdown-select-list";
-import caviteDivisionWithKeys from "../../../../data";
 
 const SignUpTemplate = ({ type }) => {
   const navigation = useNavigation();
@@ -29,8 +28,6 @@ const SignUpTemplate = ({ type }) => {
   const [churchId, setChurchId] = useState("");
   const [email, setEmail] = useState("");
   const [localeId, setLocaleId] = useState(1);
-
-  const data = caviteDivisionWithKeys["CENTRAL DISTRICT"];
 
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: "27%" }}>

@@ -21,7 +21,7 @@ const Profile = ({ navigation }) => {
         <View style={styles.avatarContainer}>
           <Image
             style={styles.img}
-            source={require("../../../assets/images/kurtd.jpg")}
+            source={require('../../../assets/images/kurtd.jpg')}
           />
           <TouchableOpacity style={styles.changePfp}>
             <View style={styles.camIcon}>
@@ -122,18 +122,7 @@ const Profile = ({ navigation }) => {
           </View>
 
           <TouchableOpacity
-            style={{
-              alignSelf: "center",
-              width: "95%",
-              backgroundColor: COLORS.bgSecondary,
-              borderRadius: 5,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 5,
-              paddingVertical: 5,
-              marginTop: 10,
-            }}
+            style={styles.editBtn}
           >
             <MaterialCommunityIcons
               name="pencil"
