@@ -3,17 +3,17 @@ import { COLORS, SIZES } from "../../constants/theme";
 export const styles = StyleSheet.create({
   flexOne: { flex: 1 },
   bottomWrapper: {
-    flex: 1,
-    backgroundColor: COLORS.bgSecondary,
     alignItems: "center",
     borderTopEndRadius: 50,
+    borderTopStartRadius: 50,
+    gap: SIZES.xxxLarge,
+    backgroundColor:COLORS.white
   },
   textContainer: {
     flex: 0.3,
-    backgroundColor: COLORS.bgSecondary,
+    gap: SIZES.small,
     width: "80%",
     marginTop: "5%",
-    marginBottom: "10%",
   },
   textTitle: {
     textAlign: "center",
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     fontSize: SIZES.xxLarge,
   },
   textSubtitle: { textAlign: "center", color: COLORS.textPrimary },
-  form: { flex: 1, width: "100%", alignItems: "center", marginTop: "2%" },
+  form: { flex: 1, width: "100%", alignItems: "center", marginTop: "2%", gap:SIZES.medium },
   inputField: {
     flexDirection: "row",
     gap: 10,
@@ -33,18 +33,17 @@ export const styles = StyleSheet.create({
     borderColor: COLORS.bgPrimary,
   },
   btn: {
-    width: "80%",
+    width: "100%",
     backgroundColor: COLORS.bgPrimary,
     padding: 10,
-    borderRadius: 10000,
-    marginTop: "5%",
+    borderRadius: 5,
   },
   btnText: { textAlign: "center", color: COLORS.white, fontWeight: "bold" },
   changeEmailText: {
     display: "flex",
-    flexDirection: "row",
-    gap: 5,
-    marginBottom: "3%",
+    marginBottom: SIZES.medium,
+    gap:SIZES.xSmall,
+    width: "80%", alignItems:'center'
   },
   changeEmail: {
     color: COLORS.bgPrimary,
