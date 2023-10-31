@@ -16,6 +16,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { verificationSentMessage } from "../../utils/Toast";
 import { styles } from "./Verification.style";
+import {styles as Styles} from '../../styles/Common.style'
 
 const Verification = () => {
   const navigation = useNavigation();
@@ -69,7 +70,7 @@ const Verification = () => {
               </Text>
             </View>
             <View style={styles.form}>
-              <View style={styles.inputField}>
+              <View style={[Styles.inputField, {paddingVertical:10}]}>
                 <MaterialIcons
                   name="verified"
                   size={24}
@@ -81,7 +82,7 @@ const Verification = () => {
               </View>
 
               <TouchableOpacity
-                style={styles.btn}
+                style={Styles.btn}
                 onPress={() => navigation.replace("Home")}
               >
                 <Text style={styles.btnText}>VERIFY</Text>

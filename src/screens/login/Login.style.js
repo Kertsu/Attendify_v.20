@@ -52,3 +52,52 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+export const iosStyles = StyleSheet.create({
+  flexOne: { flex: 1 },
+  bottomWrapper: {
+    flex: 1,
+    backgroundColor: COLORS.bgSecondary,
+    alignItems: "center",
+    borderTopEndRadius: 50,
+  },
+  textContainer: {
+    flex: 0.3,
+    backgroundColor: COLORS.bgSecondary,
+    width: "80%",
+    marginTop: "5%",
+    marginBottom: "10%",
+  },
+  textTitle: {
+    textAlign: "center",
+    fontWeight: "bold",
+    color: COLORS.textSecondary,
+    fontSize: SIZES.xxLarge,
+  },
+  textSubtitle: { textAlign: "center", color: COLORS.textPrimary },
+  form: { flex: 1, width: "100%", alignItems: "center", marginTop: "2%" },
+  inputField: {
+    flexDirection: "row",
+    gap: 10,
+    padding: 10,
+    width: "80%",
+    borderRadius: 1000,
+    borderWidth: 1,
+    borderColor: COLORS.bgPrimary,
+  },
+  btn: {
+    width: "80%",
+    backgroundColor: COLORS.bgPrimary,
+    padding: 10,
+    borderRadius: 10000,
+    marginTop: "5%",
+  },
+  btnText: { textAlign: "center", color: COLORS.white, fontWeight: "bold" },
+  changeEmailText: {
+    width: "100%",
+    display: "flex",
+    marginBottom: "3%",
+    alignItems:'center'
+  }, 
+  createAccountContainer : {width:'100%', justifyContent:'center', alignItems:'center', gap:SIZES.xSmall, marginBottom:'5%'}
+});
