@@ -35,9 +35,6 @@ const Login = () => {
             contentContainerStyle={{ backgroundColor: "white" }}
           >
             <View
-              style={{
-                backgroundColor: COLORS.bgSecondary,
-              }}
             >
               <View
                 style={{
@@ -56,7 +53,7 @@ const Login = () => {
               </View>
             </View>
 
-            <View style={{ backgroundColor: COLORS.bgSecondary }}>
+            <View >
               <View style={[styles.bottomWrapper]}>
                 <View style={[styles.textContainer]}>
                   <Text style={[styles.textTitle]}>Sign in</Text>
@@ -116,7 +113,7 @@ const Login = () => {
           behavior={Platform.OS == "android" ? "height" : "padding"}
         >
           <ScrollView bounces={false} contentContainerStyle={iosStyles.flexOne}>
-            <View style={{ flex: 0.5, backgroundColor: COLORS.bgSecondary }}>
+            <View style={{ flex: 0.5}}>
               <View
                 style={{
                   flex: 1,

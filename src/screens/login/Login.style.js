@@ -57,13 +57,11 @@ export const iosStyles = StyleSheet.create({
   flexOne: { flex: 1 },
   bottomWrapper: {
     flex: 1,
-    backgroundColor: COLORS.bgSecondary,
     alignItems: "center",
     borderTopEndRadius: 50,
   },
   textContainer: {
     flex: 0.3,
-    backgroundColor: COLORS.bgSecondary,
     width: "80%",
     marginTop: "5%",
     marginBottom: "10%",

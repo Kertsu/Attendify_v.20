@@ -16,12 +16,12 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { verificationSentMessage } from "../../utils/Toast";
 import { styles } from "./Verification.style";
-import {styles as Styles} from '../../styles/Common.style'
+import { styles as Styles } from "../../styles/Common.style";
 
 const Verification = () => {
   const navigation = useNavigation();
   const [verificationCode, setVerificationCode] = useState("");
-  const [isCodeSent, setIsCodeSent] = useState(false)
+  const [isCodeSent, setIsCodeSent] = useState(false);
   const [count, setCount] = useState(45);
 
   const countDown = () => {
@@ -38,75 +38,167 @@ const Verification = () => {
       });
     }, 1000);
   };
-  
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      
-      <KeyboardAvoidingView style={styles.flexOne} behavior={Platform.OS == 'android' ? 'height' :'padding'}>
-      <ScrollView contentContainerStyle={styles.flexOne}>
 
-      <View style={{ flex: 0.5, backgroundColor: COLORS.bgSecondary }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            backgroundColor: COLORS.white,
-            borderBottomStartRadius: 50,
-          }}
+  if (Platform.OS == "android") {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+        <KeyboardAvoidingView
+          style={styles.flexOne}
+          behavior={Platform.OS == "android" ? "height" : "padding"}
         >
-          <Image
-            style={{ width: "100%", height: "100%", borderRadius: 1000 }}
-            resizeMode="contain"
-            source={require("../../../assets/images/auth.png")}
-          />
-        </View>
-      </View>
-
-          <View style={styles.bottomWrapper}>
-            <View style={styles.textContainer}>
-              <Text style={styles.textTitle}>VERIFICATION</Text>
-              <Text style={styles.textSubtitle}>
-                Verification code has been sent to [email]
-              </Text>
-            </View>
-            <View style={styles.form}>
-              <View style={[Styles.inputField, {paddingVertical:10}]}>
-                <MaterialIcons
-                  name="verified"
-                  size={24}
-                  color={COLORS.bgPrimary}
-                />
-                <TextInput style={{width:'90%'}} placeholder="Verification code" value={verificationCode}
-                onChangeText={(text) => {setVerificationCode(text)}}
+          <ScrollView showsVerticalScrollIndicator={false} >
+            <View style={{ flex: 0.5 }}>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: "center",
+                  backgroundColor: COLORS.white,
+                  borderBottomStartRadius: 50,
+                }}
+              >
+                <Image
+                  style={{ width: 250, height: 250, borderRadius: 1000 }}
+                  resizeMode="contain"
+                  source={require("../../../assets/images/auth.png")}
                 />
               </View>
+            </View>
 
-              <TouchableOpacity
-                style={Styles.btn}
-                onPress={() => navigation.replace("Home")}
+            <View style={[styles.bottomWrapper]}>
+              <View style={[styles.textContainer]}>
+                <Text style={styles.textTitle}>VERIFICATION</Text>
+                <Text style={styles.textSubtitle}>
+                  Verification code has been sent to [email]
+                </Text>
+              </View>
+              <View style={[styles.form]}>
+                <View style={[Styles.inputField, { paddingVertical: 10 }]}>
+                  <MaterialIcons
+                    name="verified"
+                    size={24}
+                    color={COLORS.bgPrimary}
+                  />
+                  <TextInput
+                    style={{ width: "90%" }}
+                    placeholder="Verification code"
+                    value={verificationCode}
+                    onChangeText={(text) => {
+                      setVerificationCode(text);
+                    }}
+                  />
+                </View>
+
+                <TouchableOpacity
+                  style={Styles.btn}
+                  onPress={() => navigation.replace("Home")}
+                >
+                  <Text style={styles.btnText}>VERIFY</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{ marginTop: SIZES.medium }}
+                  onPress={countDown}
+                >
+                  <Text style={{ color: COLORS.bgPrimary }}>
+                    {isCodeSent ? count : "Resend"}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={[styles.changeEmailText, {marginTop:'33%'}]}>
+                <Text style={{ color: COLORS.textSecondary }}>
+                  Entered the wrong email?
+                </Text>
+                <TouchableOpacity onPress={() => navigation.replace("Login")}>
+                  <Text style={styles.changeEmail}>Change email</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    );
+  } else {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+        <KeyboardAvoidingView
+          style={styles.flexOne}
+          behavior={Platform.OS == "android" ? "height" : "padding"}
+        >
+          <ScrollView bounces={false} contentContainerStyle={styles.flexOne}>
+            <View style={{ flex: 0.5 }}>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: "center",
+                  backgroundColor: COLORS.white,
+                  borderBottomStartRadius: 50,
+                }}
               >
-                <Text style={styles.btnText}>VERIFY</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={{marginTop:'1%'}} onPress={countDown}>
-                <Text style={{color:COLORS.bgPrimary}}>{isCodeSent ? count : 'Resend'}</Text>
-              </TouchableOpacity>
+                <Image
+                  style={{ width: "100%", height: "100%", borderRadius: 1000 }}
+                  resizeMode="contain"
+                  source={require("../../../assets/images/auth.png")}
+                />
+              </View>
             </View>
 
-            <View style={styles.changeEmailText}>
-              <Text style={{ color: COLORS.textSecondary }}>
-                Entered the wrong email?
-              </Text>
-              <TouchableOpacity onPress={() => navigation.replace("Login")}>
-                <Text style={styles.changeEmail}>Change email</Text>
-              </TouchableOpacity>
+            <View style={styles.bottomWrapper}>
+              <View style={styles.textContainer}>
+                <Text style={styles.textTitle}>VERIFICATION</Text>
+                <Text style={styles.textSubtitle}>
+                  Verification code has been sent to [email]
+                </Text>
+              </View>
+                <View style={[styles.form, {gap:SIZES.medium}]}>
+                <View style={{gap:'5%', width:'100%', alignItems:'center'}}>
+                  <View style={[Styles.inputField, { paddingVertical: 10 }]}>
+                    <MaterialIcons
+                      name="verified"
+                      size={24}
+                      color={COLORS.bgPrimary}
+                    />
+                    <TextInput
+                      style={{ width: "90%" }}
+                      placeholder="Verification code"
+                      value={verificationCode}
+                      onChangeText={(text) => {
+                        setVerificationCode(text);
+                      }}
+                    />
+                  </View>
+                  <TouchableOpacity
+                    style={Styles.btn}
+                    onPress={() => navigation.replace("Home")}
+                  >
+                    <Text style={styles.btnText}>VERIFY</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <TouchableOpacity
+                  style={{ marginTop: "1%" }}
+                  onPress={countDown}
+                >
+                  <Text style={{ color: COLORS.bgPrimary }}>
+                    {isCodeSent ? count : "Resend"}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={[styles.changeEmailText, {marginBottom: '7%'}]}>
+                <Text style={{ color: COLORS.textSecondary }}>
+                  Entered the wrong email?
+                </Text>
+                <TouchableOpacity onPress={() => navigation.replace("Login")}>
+                  <Text style={styles.changeEmail}>Change email</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
-  );
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    );
+  }
 };
 
 export default Verification;
-

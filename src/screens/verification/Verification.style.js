@@ -5,17 +5,13 @@ export const styles = StyleSheet.create({
     flexOne: { flex: 1 },
     bottomWrapper: {
       flex: 1,
-      backgroundColor: COLORS.bgSecondary,
       alignItems: "center",
-      borderTopEndRadius: 50,
+      gap:SIZES.xxxLarge
     },
     textContainer: {
       flex: 0.3,
-      backgroundColor: COLORS.bgSecondary,
-      borderTopEndRadius: 50,
-      width: "60%",
+      width: "80%",
       marginTop: "5%",
-      marginBottom: "10%",
     },
     textTitle: {
       textAlign: "center",
