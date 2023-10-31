@@ -30,11 +30,11 @@ const SignUpTemplate = ({ type }) => {
   const [localeId, setLocaleId] = useState(1);
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingTop: "27%" }}>
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding': 'height'}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} keyboardVerticalOffset={15} behavior={Platform.OS === 'ios' ? 'padding': 'height'}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{ backgroundColor: COLORS.bgSecondary, paddingHorizontal: 10 }}
+          style={{ backgroundColor:COLORS.white, paddingHorizontal: 10 }}
         >
           <View
             style={{
@@ -64,7 +64,7 @@ const SignUpTemplate = ({ type }) => {
             <View style={styles.inputField}>
               <AntDesign name="idcard" size={24} color={COLORS.bgPrimary} />
               <TextInput
-                style={{ width: "90%" }}
+                style={{ width: "90%", paddingVertical:10 }}
                 placeholder="First name"
                 onChangeText={() => {}}
               />
@@ -72,7 +72,7 @@ const SignUpTemplate = ({ type }) => {
             <View style={styles.inputField}>
               <AntDesign name="idcard" size={24} color={COLORS.bgPrimary} />
               <TextInput
-                style={{ width: "90%" }}
+                style={{ width: "90%", paddingVertical:10  }}
                 placeholder="Last name"
                 onChangeText={() => {}}
               />
@@ -84,7 +84,7 @@ const SignUpTemplate = ({ type }) => {
                 color={COLORS.bgPrimary}
               />
               <TextInput
-                style={{ width: "90%" }}
+                style={{ width: "90%", paddingVertical:10  }}
                 placeholder="Church ID"
                 onChangeText={() => {}}
               />
@@ -93,7 +93,7 @@ const SignUpTemplate = ({ type }) => {
             <View style={styles.inputField}>
               <MaterialIcons name="email" size={24} color={COLORS.bgPrimary} />
               <TextInput
-                style={{ width: "90%" }}
+                style={{ width: "90%", paddingVertical:10   }}
                 placeholder="Enter email here"
                 onChangeText={() => {}}
               />

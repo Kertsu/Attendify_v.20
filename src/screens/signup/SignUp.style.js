@@ -9,9 +9,5 @@ export const screenStyle = {
     tabBarStyle: {
       backgroundColor: COLORS.white,
       paddingTop: Platform.OS == 'ios' ? '10%' : '5%',
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
     },
   };
