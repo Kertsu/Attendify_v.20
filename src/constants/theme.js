@@ -5,7 +5,7 @@ const COLORS = {
   white: '#fff',
   gray: '#f2f2f2',
   outlineGray: '#dddddd',
-  darkGray: '#666666',
+  darkGray: '#bbbbbb',
   darkerGray: '#444444',
 
   bgPrimary: "#1DA1F2",
@@ -14,6 +14,8 @@ const COLORS = {
 };
 
 const SIZES = {
+  xxxSmall: 4,
+  xxSmall: 8,
   xSmall: 10,
   small: 12,
   medium: 16,
