@@ -4,7 +4,7 @@ export const groupAnnouncements = [
         profile: require('./assets/images/kurtd.jpg'),
         author: "Kurtd Daniel Bigtas",
         venue: 'ISU Cauayan Campus',
-        timeAgo: '6h',
+        timeAgo: '1m',
         announcementTitle: 'MASS ORIENTATION',
         announcementDateAndTime: 'Sept. 24, 2023 @ 8:00 AM',
         content: `Lahat po ng Newly Brethren, 1 year pababa na sa Iglesia at kahit mahigit na 1 year kung dipa naka pagconduct ng mass orientation ay hinihikayat na dumalo po.`
@@ -13,7 +13,7 @@ export const groupAnnouncements = [
         id:2,
         profile: require('./assets/images/jm.jpg'),
         author: "John Mark Faeldonia",
-        venue: 'ISU Cauayan Campus',
+        venue: 'Bustos Locale',
         timeAgo: '12h',
         announcementTitle: 'WEEKLY MEETING',
         announcementDateAndTime: 'Sept. 26, 2023 @ 3:00 PM',
