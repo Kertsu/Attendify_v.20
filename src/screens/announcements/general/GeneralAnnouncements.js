@@ -18,6 +18,7 @@ const GeneralAnnouncements = () => {
       } keyExtractor={(item) => item.id.toString()}/>
       
        :<Text style={{textAlign: 'center'}}>No data to show</Text>}
+
     </ >
   )
 }

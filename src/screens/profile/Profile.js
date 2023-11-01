@@ -23,7 +23,7 @@ const Profile = ({ navigation }) => {
             style={styles.img}
             source={require('../../../assets/images/kurtd.jpg')}
           />
-          <TouchableOpacity style={styles.changePfp}>
+          {/* <TouchableOpacity style={styles.changePfp}>
             <View style={styles.camIcon}>
               <Ionicons
                 style={{ textAlign: "center" }}
@@ -32,7 +32,7 @@ const Profile = ({ navigation }) => {
                 color={COLORS.textPrimary}
               />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <View style={{ marginTop: "5%", alignItems: "center" }}>

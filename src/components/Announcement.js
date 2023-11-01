@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../constants/theme";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import PostButton from "./PostButton";
 
 const Announcement = ({
   profile,
@@ -16,30 +17,18 @@ const Announcement = ({
 }) => {
   return (
     <>
-      <View
-        style={[
-          styles.container
-        ]}
-      >
-        <View
-          style={styles.leftContainer}
-        >
+      <View style={[styles.container]}>
+        <View style={styles.leftContainer}>
           <View style={[styles.avatarContainer]}>
             <Image style={styles.avatar} source={profile} />
           </View>
-          <View
-            style={styles.avatarLine}
-          ></View>
+          <View style={styles.avatarLine}></View>
         </View>
         <View style={{ gap: SIZES.xSmall, flex: 1 }}>
-          <View
-            style={styles.topContainer}
-          >
+          <View style={styles.topContainer}>
             <Text style={styles.author}>{author}</Text>
 
-            <View
-              style={styles.timeLogo}
-            >
+            <View style={styles.timeLogo}>
               <View>
                 <Text style={{ color: COLORS.darkGray, fontWeight: "bold" }}>
                   {timeAgo}
@@ -53,43 +42,38 @@ const Announcement = ({
               </View>
             </View>
           </View>
-          <View
-            style={{ gap: SIZES.xSmall}}
-          >
-            <View style={styles.announcementHeader}>
+          {(announcementTitle || dateTime || venue) && (<View style={{ gap: SIZES.xSmall }}>
+            {announcementTitle && <View style={styles.announcementHeader}>
               <Entypo name="pin" size={24} color={COLORS.darkGray} />
               <Text style={styles.announcementHighlights}>
                 {announcementTitle}
               </Text>
-            </View>
-            <View style={styles.announcementHeader}>
+            </View>}
+            {dateTime && <View style={styles.announcementHeader}>
               <MaterialIcons
                 name="date-range"
                 size={24}
                 color={COLORS.darkGray}
               />
               <Text style={styles.announcementHighlights}>{dateTime}</Text>
-            </View>
-            <View style={styles.announcementHeader}>
+            </View>}
+            {venue && <View style={styles.announcementHeader}>
               <MaterialIcons
                 name="location-pin"
                 size={24}
                 color={COLORS.darkGray}
               />
               <Text style={styles.announcementHighlights}>{venue}</Text>
-            </View>
-          </View>
+            </View>}
+          </View>)}
 
-          <View style={{ marginTop: SIZES.medium }}>
+          <View style={{ marginTop: (announcementTitle || venue || dateTime) ? SIZES.medium : 0 }}>
             <Text style={styles.announcementContent}>{content}</Text>
           </View>
         </View>
       </View>
-      <View
-        style={styles.separator}
-      ></View>
+      <View style={styles.separator}></View>
     </>
-    
   );
 };
 
@@ -105,7 +89,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     gap: SIZES.xSmall,
   },
-  avatarLine:{
+  avatarLine: {
     borderWidth: 1,
     borderColor: COLORS.outlineGray,
     width: 1,
@@ -128,7 +112,6 @@ export const styles = StyleSheet.create({
     marginTop: SIZES.small,
   },
 
-
   announcementHeader: {
     gap: SIZES.xxxSmall,
     justifyContent: "flex-start",
@@ -137,7 +120,7 @@ export const styles = StyleSheet.create({
   },
   announcementHighlights: { fontSize: SIZES.medium, fontWeight: "bold" },
   announcementContent: { color: COLORS.textSecondary, fontSize: SIZES.medium },
-  
+
   logo: {
     width: "50%",
     height: "50%",
@@ -150,7 +133,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  
+
   avatarContainer: {
     width: 50,
     height: 50,

@@ -137,10 +137,7 @@ const Login = () => {
             >
               <View style={[iosStyles.textContainer]}>
                 <Text style={[iosStyles.textTitle]}>Sign in</Text>
-                <Text style={[iosStyles.textSubtitle]}>
-                  Welcome back! Please enter your credentials to access your
-                  account.
-                </Text>
+               
               </View>
               <View style={[iosStyles.form]}>
                 <View style={Styles.inputField}>

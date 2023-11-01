@@ -3,6 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {Home, Login, OnBoarding, SignUp, Verification} from "../screens/";
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import GatheringForm from "../screens/gatherings/posts/GatheringForm";
+import { COLORS } from "../constants/theme";
 const Stack = createNativeStackNavigator();
 
 const StackGroup = () => {
@@ -34,6 +36,7 @@ const StackGroup = () => {
           <Stack.Screen component={Login} name="Login" />
           <Stack.Screen component={Verification} name="Verification" />
           <Stack.Screen component={Home} name="Home" />
+          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Gathering'}} component={GatheringForm} name="GatheringForm" />
         </Stack.Navigator>
   );
 };

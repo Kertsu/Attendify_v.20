@@ -64,7 +64,6 @@ export const iosStyles = StyleSheet.create({
     flex: 0.3,
     width: "80%",
     marginTop: "5%",
-    marginBottom: "10%",
   },
   textTitle: {
     textAlign: "center",
@@ -94,7 +93,7 @@ export const iosStyles = StyleSheet.create({
   changeEmailText: {
     width: "100%",
     display: "flex",
-    marginBottom: "3%",
+    marginBottom: "2%",
     alignItems:'center'
   }, 
   createAccountContainer : {width:'100%', justifyContent:'center', alignItems:'center', gap:SIZES.xSmall, marginBottom:'5%'}

@@ -23,10 +23,7 @@ export const groupAnnouncements = [
         id:3,
         profile: require('./assets/images/kurtd.jpg'),
         author: "Kurtd Daniel Bigtas",
-        venue: 'ISU Cauayan Campus',
         timeAgo: '1d',
-        announcementTitle: 'VOLUNTEER EVENT',
-        announcementDateAndTime: 'Oct. 1, 2023 @ 10:30 AM',
         content: 'We need volunteers for our upcoming community event. Sign up today!'
     },
     {

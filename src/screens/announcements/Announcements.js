@@ -4,6 +4,7 @@ import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import GroupAnnouncements from "./group/GroupAnnouncements";
 import GeneralAnnouncements from "./general/GeneralAnnouncements";
+import { COLORS } from "../../constants/theme";
 
 const TopTabs = createMaterialTopTabNavigator();
 
@@ -11,7 +12,7 @@ const TopTabs = createMaterialTopTabNavigator();
 
 const Announcements = () => {
   return (
-      <TopTabs.Navigator>
+      <TopTabs.Navigator screenOptions={{tabBarIndicatorStyle:{backgroundColor:COLORS.darkerGray}}}>
         <TopTabs.Screen options={{
           title:"General"
         }}  name="GeneralAnnouncements" component={GeneralAnnouncements}/>
