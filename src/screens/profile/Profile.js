@@ -63,7 +63,7 @@ const Profile = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.separator}></View>
-      <View style={styles.secTwo}>
+      <View style={styles.section}>
         <Text style={styles.secTitle}>Details</Text>
 
         <View style={styles.detailsContainer}>
@@ -133,7 +133,27 @@ const Profile = ({ navigation }) => {
               Edit Profile
             </Text>
           </TouchableOpacity>
+          
         </View>
+      </View>
+      <View style={styles.separator}></View>
+
+
+      <View style={[styles.section,{width:'100%'}]}>
+      <Text style={styles.secTitle}>Account Settings</Text>
+
+      <TouchableOpacity onPress={()=> navigation.replace('Login')}
+            style={[styles.editBtn, {backgroundColor:COLORS.darkerGray}]}
+          >
+            <MaterialCommunityIcons
+              name="logout"
+              size={24}
+              color={COLORS.white}
+            />
+            <Text style={{ color: COLORS.white, fontWeight: "bold" }}>
+              Logout
+            </Text>
+          </TouchableOpacity>
       </View>
 
       {/* <View style={{marginTop:10, alignSelf:'flex-start', paddingHorizontal:10}}>

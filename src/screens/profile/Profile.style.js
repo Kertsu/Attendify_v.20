@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   camIcon: { aspectRatio: 1 / 1, borderRadius: 1000 },
-  secTwo: {
+  section: {
     width: "100%",
     paddingVertical: 20,
     paddingHorizontal: 10,
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
   },
-  infoText: { color: COLORS.darkGray, fontSize: SIZES.medium },
+  infoText: { color: COLORS.darkerGray, fontSize: SIZES.medium },
   editBtn: {
     alignSelf: "center",
     width: "95%",

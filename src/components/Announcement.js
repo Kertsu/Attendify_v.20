@@ -5,6 +5,7 @@ import { COLORS, SIZES } from "../constants/theme";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import PostButton from "./PostButton";
+import Separator from "./Separator";
 
 const Announcement = ({
   profile,
@@ -72,7 +73,7 @@ const Announcement = ({
           </View>
         </View>
       </View>
-      <View style={styles.separator}></View>
+      <Separator/>
     </>
   );
 };
@@ -105,13 +106,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  separator: {
-    width: "100%",
-    borderColor: COLORS.outlineGray,
-    borderWidth: 1,
-    marginTop: SIZES.small,
-  },
-
   announcementHeader: {
     gap: SIZES.xxxSmall,
     justifyContent: "flex-start",
