@@ -11,8 +11,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { styles } from "./Profile.style";
+
 const Profile = ({ navigation }) => {
   return (
+    <>
+    
+    
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.container}
@@ -139,7 +143,7 @@ const Profile = ({ navigation }) => {
       <View style={styles.separator}></View>
 
 
-      <View style={[styles.section,{width:'100%'}]}>
+      {/* <View style={[styles.section,{width:'100%'}]}>
       <Text style={styles.secTitle}>Account Settings</Text>
 
       <TouchableOpacity onPress={()=> navigation.replace('Login')}
@@ -154,12 +158,17 @@ const Profile = ({ navigation }) => {
               Logout
             </Text>
           </TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* <View style={{marginTop:10, alignSelf:'flex-start', paddingHorizontal:10}}>
       <Text style={{fontSize:SIZES.large, fontWeight:'bold'}}>Account Settings</Text>
       </View> */}
+
+      
     </ScrollView>
+    
+    </>
+
   );
 };
 

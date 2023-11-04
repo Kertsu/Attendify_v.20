@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {Home, Login, OnBoarding, SignUp, Verification} from "../screens/";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import GatheringForm from "../screens/gatherings/posts/GatheringForm";
-import { COLORS } from "../constants/theme";
 const Stack = createNativeStackNavigator();
 
 const StackGroup = () => {
