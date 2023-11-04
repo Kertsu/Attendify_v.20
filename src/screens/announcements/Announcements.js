@@ -12,7 +12,7 @@ const TopTabs = createMaterialTopTabNavigator();
 
 const Announcements = () => {
   return (
-      <TopTabs.Navigator screenOptions={{tabBarIndicatorStyle:{backgroundColor:COLORS.darkerGray}}}>
+      <TopTabs.Navigator screenOptions={{tabBarIndicatorStyle:{backgroundColor:COLORS.darkerGray}, tabBarStyle:{shadowOpacity:0,elevation:0}}}>
         <TopTabs.Screen options={{
           title:"General"
         }}  name="GeneralAnnouncements" component={GeneralAnnouncements}/>

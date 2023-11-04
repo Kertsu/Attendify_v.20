@@ -18,7 +18,7 @@ const GeneralAnnouncements = () => {
         <Announcement profile={item.profile} author={item.author} timeAgo={item.timeAgo} announcementTitle={item.announcementTitle} dateTime={item.announcementDateAndTime} venue={item.venue} content={item.content}/>
       } keyExtractor={(item) => item.id.toString()}/>
       
-       :<NoData/>}
+       :<NoData screen="announcements"/>}
 
     </ >
   )

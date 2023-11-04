@@ -16,6 +16,7 @@ import BottomSheet from "react-native-simple-bottom-sheet";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
+import Manage from "../manage/Manage";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +30,8 @@ const TabGroup = ({ panelRef }) => {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name == "Announcements") {
             iconName = focused ? "newspaper" : "newspaper-outline";
+          } else if (route.name == "Manage"){
+            iconName = focused? "people" :"people-outline"
           }
           if (route.name !== "Profile") {
             return (
@@ -59,6 +62,7 @@ const TabGroup = ({ panelRef }) => {
         headerRight: () => <AnnouncementTabHeaderRight/>, 
         headerRightContainerStyle: { justifyContent:'center', alignItems:'center'}
       }} component={Announcements} />
+      <Tab.Screen name="Manage" component={Manage} />
       <Tab.Screen
         name="Profile"
         options={{ headerTitle: () => <ProfileHeader panelRef={panelRef} /> }}
