@@ -87,3 +87,5 @@ export const groupAnnouncements = [
         content: 'Celebrate the launch of a new book by a renowned author.'
     }
 ];
+
+// export const groupAnnouncements = []

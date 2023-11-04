@@ -3,9 +3,8 @@ import {
   Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  Dimensions,
   TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Gatherings, Announcements, Profile } from "../index";
@@ -16,6 +15,7 @@ import ProfileHeader from "../../components/ProfileHeader";
 import BottomSheet from "react-native-simple-bottom-sheet";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +23,7 @@ const TabGroup = ({ panelRef }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color }) => {
+        tabBarIcon: ({ focused }) => {
           let iconName;
           if (route.name == "Gatherings") {
             iconName = focused ? "home" : "home-outline";
@@ -55,7 +55,10 @@ const TabGroup = ({ panelRef }) => {
       })}
     >
       <Tab.Screen name="Gatherings" component={Gatherings} />
-      <Tab.Screen name="Announcements" component={Announcements} />
+      <Tab.Screen name="Announcements" options={{
+        headerRight: () => <AnnouncementTabHeaderRight/>, 
+        headerRightContainerStyle: { justifyContent:'center', alignItems:'center'}
+      }} component={Announcements} />
       <Tab.Screen
         name="Profile"
         options={{ headerTitle: () => <ProfileHeader panelRef={panelRef} /> }}
@@ -121,6 +124,14 @@ const Home = () => {
     </>
   );
 };
+
+const AnnouncementTabHeaderRight = () => {
+  return (
+    <TouchableOpacity>
+      <MaterialIcons name="post-add" size={SIZES.xLarge} color={COLORS.textPrimary} />
+    </TouchableOpacity>
+  )
+}
 
 export default Home;
 

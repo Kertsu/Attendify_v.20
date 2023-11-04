@@ -1,11 +1,12 @@
 import { View, Text, ScrollView, FlatList } from 'react-native'
 import React from 'react'
-import { COLORS } from '../../../constants/theme'
+import { COLORS, SIZES } from '../../../constants/theme'
 import { groupAnnouncements } from '../../../../data'
 import Announcement from '../../../components/Announcement'
+import NoData from '../../../components/NoData'
 
 const GeneralAnnouncements = () => {
-  const announcements = groupAnnouncements;
+  const announcements = [];
 
   return (
     <>
@@ -17,7 +18,7 @@ const GeneralAnnouncements = () => {
         <Announcement profile={item.profile} author={item.author} timeAgo={item.timeAgo} announcementTitle={item.announcementTitle} dateTime={item.announcementDateAndTime} venue={item.venue} content={item.content}/>
       } keyExtractor={(item) => item.id.toString()}/>
       
-       :<Text style={{textAlign: 'center'}}>No data to show</Text>}
+       :<NoData/>}
 
     </ >
   )
