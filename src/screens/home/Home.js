@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  TouchableOpacity,
+  TouchableOpacity, Dimensions, Platform
 } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Gatherings, Announcements, Profile } from "../index";
@@ -84,7 +84,7 @@ const Home = () => {
         isOpen={false}
         ref={(ref) => (panelRef.current = ref)}
         sliderMinHeight={0}
-        innerContentStyle={{ paddingVertical: SIZES.small }}
+        innerContentStyle={{ marginTop:-SIZES.medium,paddingBottom: SIZES.small }}
       >
         <TouchableHighlight
           onPressIn={() => setIsPressed(true)}

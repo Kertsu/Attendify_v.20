@@ -10,7 +10,7 @@ const NoData = ({ screen }) => {
     text =  'No data to show';
   } else if (screen == "manage") {
     req = require(`../../assets/images/people.png`);
-    text = `There's no one here`
+    text = `There's no one else here`
   } else {
     req = require(`../../assets/images/addPost.png`);
     text = 'Be the first one to add a gathering post'
