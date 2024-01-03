@@ -6,10 +6,37 @@ import Stepper from "react-native-stepper-ui";
 import { StepOne, StepTwo, StepThree, StepFour } from "./_";
 
 const SignUp = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const updateField = (fieldName) => (value) => {
+    switch (fieldName) {
+      case "firstName":
+        setFirstName(value);
+        break;
+      case "lastName":
+        setLastName(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      default:
+        break;
+    }
+  };
   const navigation = useNavigation();
 
   const components = [
-    <StepOne logo={<Logo title={"Personal Info"} />} />,
+    <StepOne
+      fn={firstName}
+      ln={lastName}
+      email={email}
+      onFirstNameChange={updateField("firstName")}
+      onLastNameChange={updateField("lastName")}
+      onEmailChange={updateField("email")}
+      logo={<Logo title={"Personal Info"} />}
+    />,
     <StepTwo
       boxStyle={signUpStyles.boxStyle}
       inputStyle={signUpStyles.inputStyle}
@@ -24,41 +51,44 @@ const SignUp = () => {
       dropdownTextStyle={signUpStyles.dropdownTextStyle}
       logo={<Logo title={"Location Info"} />}
     />,
-    <StepFour
-      logo={<Logo title={"Review"} />}
-    />,
+    <StepFour logo={<Logo title={"Review"} />} />,
   ];
   const [active, setActive] = useState(0);
   return (
-    <Stepper
-      wrapperStyle={{
-        marginTop: StatusBar.currentHeight,
-        padding: SIZES.xxSmall,
-        flex: 1,
-      }}
-      stepStyle={{ backgroundColor: COLORS.bgPrimary }}
-      active={active}
-      content={components}
-      onBack={() => setActive((p) => p - 1)}
-      onFinish={() => navigation.replace("Verification")}
-      onNext={() =>
-        setActive((p) => {
-          return p + 1;
-        })
-      }
-      showButton={true}
-      buttonStyle={{
-        paddingHorizontal: SIZES.xLarge,
-        borderRadius: SIZES.xxxSmall,
-        paddingVertical: SIZES.small,
-        backgroundColor: COLORS.bgPrimary,
-      }}
-      buttonTextStyle={{
-        color: "white",
-        fontWeight: "bold",
-        textTransform: "uppercase",
-      }}
-    />
+    <>
+      <Stepper
+        wrapperStyle={{
+          marginTop: StatusBar.currentHeight,
+          padding: SIZES.xxSmall,
+          flex: 1,
+        }}
+        stepStyle={{ backgroundColor: COLORS.bgPrimary }}
+        active={active}
+        content={components}
+        onBack={() => setActive((p) => p - 1)}
+        onFinish={() => navigation.replace("Verification")}
+        onNext={() =>
+          setActive((p) => {
+            return p + 1;
+          })
+        }
+        showButton={true}
+        buttonStyle={{
+          paddingHorizontal: SIZES.xLarge,
+          borderRadius: SIZES.xxxSmall,
+          paddingVertical: SIZES.small,
+          backgroundColor: COLORS.bgPrimary,
+        }}
+        buttonTextStyle={{
+          color: "white",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+        }}
+      />
+      <Text>EMAIL: {email}</Text>
+      <Text>FN: {firstName}</Text>
+      <Text>LN: {lastName}</Text>
+    </>
   );
 };
 
