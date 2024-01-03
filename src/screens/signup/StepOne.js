@@ -13,14 +13,20 @@ const StepOne = ({
   ln,
   fn,
 }) => {
-  const handleFirstName = (firstName) => {
-    onFirstNameChange(firstName);
-  };
-  const handleLastName = (lastName) => {
-    onLastNameChange(lastName);
-  };
-  const handleEmail = (email) => {
-    onEmailChange(email);
+  const handleField = (fieldName) => (value) => {
+    switch (fieldName) {
+      case "firstName":
+        onFirstNameChange(value);
+        break;
+      case "lastName":
+        onLastNameChange(value);
+        break;
+      case "email":
+        onEmailChange(value);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -41,7 +47,7 @@ const StepOne = ({
               style={{ width: "100%", paddingVertical: 10 }}
               placeholder="First name"
               onChangeText={(fn) => {
-                handleFirstName(fn);
+                handleField('firstName')(fn);
               }}
             />
           </View>
@@ -52,7 +58,7 @@ const StepOne = ({
               style={{ width: "100%", paddingVertical: 10 }}
               placeholder="Last name"
               onChangeText={(ln) => {
-                handleLastName(ln);
+                handleField('lastName')(ln);
               }}
             />
           </View>
@@ -63,7 +69,7 @@ const StepOne = ({
               style={{ width: "90%", paddingVertical: 10 }}
               placeholder="Email"
               onChangeText={(email) => {
-                handleEmail(email);
+                handleField('email')(email);
               }}
             />
           </View>

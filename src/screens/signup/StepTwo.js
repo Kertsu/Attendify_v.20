@@ -1,12 +1,42 @@
-import { useState } from "react";
 import { View, TextInput } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { styles } from "../../../src/styles/Common.style";
 import { COLORS } from "../../constants/theme";
 import { SelectList } from "react-native-dropdown-select-list";
 
-const StepTwo = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyle }) => {
-  const [churchId, setChurchId] = useState("");
+const StepTwo = ({
+  logo,
+  boxStyle,
+  inputStyle,
+  dropdownStyle,
+  dropdownTextStyle,
+  id,
+  type,
+  district,
+  locale,
+  onIdChange,
+  onTypeChange,
+  onDistrictChange,
+  onLocaleChange,
+}) => {
+  const handleField = (fieldName) => (value) => {
+    switch (fieldName) {
+      case "churchId":
+        onIdChange(value);
+        break;
+      case "type":
+        onTypeChange(value);
+        break;
+      case "district":
+        onDistrictChange(value);
+        break;
+      case "locale":
+        onLocaleChange(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   const types = [
     { key: "1", value: "Member" },
@@ -20,9 +50,7 @@ const StepTwo = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyle 
     { key: "1", value: "Locale 1" },
     { key: "2", value: "Locale 2" },
   ];
-  const [selectedType, setSelectedType] = useState("");
-  const [selectedDistrict, setSelectedDistrict] = useState("");
-  const [selectedLocale, setSelectedLocale] = useState("");
+
   return (
     <View style={{ width: "100%", flex: 1 }}>
       {logo}
@@ -41,42 +69,43 @@ const StepTwo = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyle 
               color={COLORS.bgPrimary}
             />
             <TextInput
+              value={id}
               style={{ width: "90%", paddingVertical: 10 }}
               placeholder="Church ID"
-              onChangeText={() => {}}
+              onChangeText={(id) => {handleField('churchId')(id)}}
             />
           </View>
           <SelectList
-            setSelected={(val) => setSelectedType(val)}
+            setSelected={(val) => {handleField('type')(val)}}
             save="value"
             data={types}
             boxStyles={boxStyle}
             inputStyles={inputStyle}
             dropdownStyles={dropdownStyle}
             dropdownTextStyles={dropdownTextStyle}
-            placeholder="Select a type"
+            placeholder={type === "" ? 'Select a type': type}
             notFoundText={"No data yet"}
           />
           <SelectList
-            setSelected={(val) => setSelectedDistrict(val)}
+            setSelected={(val) => {handleField('district')(val)}}
             save="value"
             data={districts}
             boxStyles={boxStyle}
             inputStyles={inputStyle}
             dropdownStyles={dropdownStyle}
             dropdownTextStyles={dropdownTextStyle}
-            placeholder="Select a district"
+            placeholder={district === "" ? 'Select a district': district}
             notFoundText={"No data yet"}
           />
           <SelectList
-            setSelected={(val) => setSelectedLocale(val)}
+            setSelected={(val) => {handleField('locale')(val)}}
             save="value"
             data={locales}
             boxStyles={boxStyle}
             inputStyles={inputStyle}
             dropdownStyles={dropdownStyle}
             dropdownTextStyles={dropdownTextStyle}
-            placeholder="Select a locale"
+            placeholder={locale === "" ? 'Select a locale': locale}
             notFoundText={"No data yet"}
           />
         </View>

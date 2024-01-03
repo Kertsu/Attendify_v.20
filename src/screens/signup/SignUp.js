@@ -6,9 +6,16 @@ import Stepper from "react-native-stepper-ui";
 import { StepOne, StepTwo, StepThree, StepFour } from "./_";
 
 const SignUp = () => {
+  {/*STEP 1 FIELDS*/}
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+
+  {/*STEP 2 FIELDS*/}
+  const [churchId, setChurchId] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedLocale, setSelectedLocale] = useState("");
 
   const updateField = (fieldName) => (value) => {
     switch (fieldName) {
@@ -20,6 +27,18 @@ const SignUp = () => {
         break;
       case "email":
         setEmail(value);
+        break;
+      case 'churchId':
+        setChurchId(value);
+        break;
+      case 'district':
+        setSelectedDistrict(value);
+        break;
+      case 'locale':
+        setSelectedLocale(value);
+        break;
+      case 'type':
+        setSelectedType(value);
         break;
       default:
         break;
@@ -38,6 +57,7 @@ const SignUp = () => {
       logo={<Logo title={"Personal Info"} />}
     />,
     <StepTwo
+      id={churchId} type={selectedType} district={selectedDistrict} locale={selectedLocale} onIdChange={updateField('churchId')} onDistrictChange={updateField('district')} onLocaleChange={updateField('locale')} onTypeChange={updateField('type')}
       boxStyle={signUpStyles.boxStyle}
       inputStyle={signUpStyles.inputStyle}
       dropdownStyle={signUpStyles.dropdownStyle}
@@ -88,6 +108,10 @@ const SignUp = () => {
       <Text>EMAIL: {email}</Text>
       <Text>FN: {firstName}</Text>
       <Text>LN: {lastName}</Text>
+      <Text>Church ID: {churchId}</Text>
+      <Text>Type: {selectedType}</Text>
+      <Text>District: {selectedDistrict}</Text>
+      <Text>Locale: {selectedLocale}</Text>
     </>
   );
 };
