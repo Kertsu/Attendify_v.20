@@ -5,11 +5,29 @@ import { COLORS } from "../../constants/theme";
 import {Entypo} from '@expo/vector-icons'
 import { SelectList } from "react-native-dropdown-select-list";
 
-const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyle }) => {
-    const [selectedRegion, setSelectedRegion] = useState("");
-    const [selectedProvince, setSelectedProvince] = useState("");
-    const [selectedMunicipality, setSelectedMunicipality] = useState("");
-    const [selectedBarangay, setSelectedBarangay] = useState("");
+const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyle, address, region, province, municipality, barangay, onAddressChange, onRegionChange, onProvinceChange, onMunicipalityChange, onBarangayChange }) => {
+
+  const handleField = (fieldName) => (value) => {
+    switch (fieldName) {
+      case "address":
+        onAddressChange(value)
+        break;
+      case "region":
+        onRegionChange(value)
+        break;
+      case "province":
+        onProvinceChange(value)
+        break;
+      case "municipality":
+        onMunicipalityChange(value)
+        break;
+      case "barangay":
+        onBarangayChange(value)
+        break;
+      default:
+        break;
+    }
+  };
   
     const regions = [
       { key: "1", value: "Region 1" },
@@ -42,53 +60,54 @@ const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyl
             <View style={[styles.inputField, { width: "100%" }]}>
               <Entypo name="address" size={24} color={COLORS.bgPrimary} />
               <TextInput
+              value={address}
                 style={{ width: "90%", paddingVertical: 10 }}
                 placeholder="Address"
-                onChangeText={() => {}}
+                onChangeText={(address) => {handleField('address')(address)}}
               />
             </View>
             <SelectList
-              setSelected={(val) => setSelectedRegion(val)}
+              setSelected={(val) => handleField('region')(val)}
               save="value"
               data={regions}
               boxStyles={boxStyle}
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder="Select a region"
+              placeholder={region === "" ? 'Select a region': region}
               notFoundText={"No data yet"}
             />
             <SelectList
-              setSelected={(val) => setSelectedProvince(val)}
+              setSelected={(val) => handleField('province')(val)}
               save="value"
               data={provinces}
               boxStyles={boxStyle}
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder="Select a province"
+              placeholder={province === "" ? 'Select a province': province}
               notFoundText={"No data yet"}
             />
             <SelectList
-              setSelected={(val) => setSelectedMunicipality(val)}
+              setSelected={(val) => handleField('municipality')(val)}
               save="value"
               data={municipalities}
               boxStyles={boxStyle}
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder="Select a municipality"
+              placeholder={municipality === "" ? 'Select a municipality': municipality}
               notFoundText={"No data yet"}
             />
             <SelectList
-              setSelected={(val) => setSelectedBarangay(val)}
+              setSelected={(val) => handleField('barangay')(val)}
               save="value"
               data={barangays}
               boxStyles={boxStyle}
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder="Select a barangay"
+              placeholder={barangay === "" ? 'Select a barangay': barangay}
               notFoundText={"No data yet"}
             />
           </View>
