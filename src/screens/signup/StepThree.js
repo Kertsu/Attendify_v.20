@@ -62,7 +62,7 @@ const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyl
               <TextInput
               value={address}
                 style={{ width: "90%", paddingVertical: 10 }}
-                placeholder="Address"
+                placeholder="Address (optional)"
                 onChangeText={(address) => {handleField('address')(address)}}
               />
             </View>
@@ -74,7 +74,7 @@ const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyl
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder={region === "" ? 'Select a region': region}
+              placeholder={region === "" ? 'Select a region (optional)': region}
               notFoundText={"No data yet"}
             />
             <SelectList
@@ -85,7 +85,7 @@ const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyl
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder={province === "" ? 'Select a province': province}
+              placeholder={province === "" ? 'Select a province (optional)': province}
               notFoundText={"No data yet"}
             />
             <SelectList
@@ -96,7 +96,7 @@ const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyl
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder={municipality === "" ? 'Select a municipality': municipality}
+              placeholder={municipality === "" ? 'Select a municipality (optional)': municipality}
               notFoundText={"No data yet"}
             />
             <SelectList
@@ -107,7 +107,7 @@ const StepThree = ({ logo, boxStyle, inputStyle, dropdownStyle, dropdownTextStyl
               inputStyles={inputStyle}
               dropdownStyles={dropdownStyle}
               dropdownTextStyles={dropdownTextStyle}
-              placeholder={barangay === "" ? 'Select a barangay': barangay}
+              placeholder={barangay === "" ? 'Select a barangay (optional)': barangay}
               notFoundText={"No data yet"}
             />
           </View>

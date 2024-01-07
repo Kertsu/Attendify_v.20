@@ -143,7 +143,7 @@ const SignUp = () => {
       dropdownTextStyle={signUpStyles.dropdownTextStyle}
       logo={<Logo title={"Location Info"} />}
     />,
-    <StepFour logo={<Logo title={"Review"} />} />,
+    <StepFour logo={<Logo title={"Review your Information"} />} />,
   ];
   const [active, setActive] = useState(0);
   return (
