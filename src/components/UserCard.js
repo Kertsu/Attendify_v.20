@@ -1,10 +1,14 @@
 import { View, Text , StyleSheet, Image, TouchableOpacity} from "react-native";
 import React from "react";
 import { SIZES, COLORS } from "../constants/theme";
+import { useNavigation } from "@react-navigation/native";
 
-const UserCard = ({ firstName, lastName, profile, localeId, churchId, isApproved }) => {
+const UserCard = ({ firstname, lastname, profile, localeId, churchId, isApproved, type, email }) => {
+  const navigation = useNavigation()
   return (
-    <TouchableOpacity style={{ flex: 1, justifyContent: "space-between", alignItems: "start", paddingHorizontal:10, paddingVertical:10, flexDirection:'row' }}>
+    <TouchableOpacity style={{ flex: 1, justifyContent: "space-between", alignItems: "start", paddingHorizontal:10, paddingVertical:10, flexDirection:'row' }} onPress={() => navigation.navigate('UserDetailsScreen', {user: {
+      firstname, lastname, profile, localeId, churchId, isApproved, type, email
+    }})} >
         <View style={{ gap: SIZES.small }}>
             <View
               style={{
@@ -21,7 +25,7 @@ const UserCard = ({ firstName, lastName, profile, localeId, churchId, isApproved
                 />
               </View>
               <View style={{ justifyContent: "center", alignItems: "flex-start" }}>
-                <Text style={styles.author}>{firstName + ' ' + lastName}</Text>
+                <Text style={styles.author}>{firstname + ' ' + lastname}</Text>
                 <Text style={{ color: COLORS.darkerGray, fontSize: SIZES.small }}>
                   {churchId}
                 </Text>

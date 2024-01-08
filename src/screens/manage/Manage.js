@@ -9,6 +9,7 @@ const Manage = () => {
   const users = [
     {
       id: 1,
+      type: 'member',
       firstname: "Lisa",
       lastname: "BLACKPINK",
       church_id: "MCGI-101-2023",
@@ -22,6 +23,7 @@ const Manage = () => {
     },
     {
       id: 2,
+      type: 'member',
       firstname: "Jennie",
       lastname: "BLACKPINK",
       church_id: "MCGI-102-2023",
@@ -35,6 +37,7 @@ const Manage = () => {
     },
     {
       id: 3,
+      type: 'member',
       firstname: "Jisoo",
       lastname: "BLACKPINK",
       church_id: "MCGI-103-2023",
@@ -48,6 +51,7 @@ const Manage = () => {
     },
     {
       id: 4,
+      type: 'member',
       firstname: "Rosé",
       lastname: "BLACKPINK",
       church_id: "MCGI-104-2023",
@@ -61,6 +65,7 @@ const Manage = () => {
     },
     {
       id: 5,
+      type: 'member',
       firstname: "Jihyo",
       lastname: "TWICE",
       church_id: "MCGI-105-2023",
@@ -74,6 +79,7 @@ const Manage = () => {
     },
     {
       id: 6,
+      type: 'member',
       firstname: "Nahyeon",
       lastname: "TWICE",
       church_id: "MCGI-106-2023",
@@ -86,6 +92,7 @@ const Manage = () => {
     },
     {
       id: 7,
+      type: 'member',
       firstname: "Sana",
       lastname: "TWICE",
       church_id: "MCGI-107-2023",
@@ -99,6 +106,7 @@ const Manage = () => {
     },
     {
       id: 8,
+      type: 'member',
       firstname: "Tzuyu",
       lastname: "TWICE",
       church_id: "MCGI-108-2023",
@@ -112,6 +120,7 @@ const Manage = () => {
     },
     {
       id: 9,
+      type: 'member',
       firstname: "Chaeyoung",
       lastname: "TWICE",
       church_id: "MCGI-109-2023",
@@ -166,12 +175,14 @@ const Manage = () => {
           renderItem={({ item }) => (
             <UserCard
               key={item.id}
-              firstName={item.firstname}
-              lastName={item.lastname}
+              firstname={item.firstname}
+              lastname={item.lastname}
               localeId={item.locale_id}
               profile={item.profile}
               churchId={item.church_id}
               isApproved={item.is_approved}
+              type={item.type}
+              email={item.email}
             />
           )}
         />
