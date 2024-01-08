@@ -101,7 +101,7 @@ const Chip = ({ type, handleChipSwitch, active }) => {
         width: "auto",
         paddingHorizontal: SIZES.small,
         paddingVertical: SIZES.xxSmall,
-        backgroundColor: active ? "black" : COLORS.outlineGray,
+        backgroundColor: active ? "black" : COLORS.gray,
         borderRadius: SIZES.xxSmall,
         justifyContent: "center",
         alignItems: "center",
