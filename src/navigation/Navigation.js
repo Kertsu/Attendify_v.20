@@ -5,6 +5,7 @@ import {Home, Login, OnBoarding, SignUp, Verification} from "../screens/";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import GatheringForm from "../screens/gatherings/posts/GatheringForm";
 import { TouchableOpacity, Text } from "react-native";
+import AnnouncementForm from "../screens/announcements/posts/AnnouncementForm";
 const Stack = createNativeStackNavigator();
 
 const StackGroup = () => {
@@ -43,6 +44,13 @@ const StackGroup = () => {
             </TouchableOpacity>
            )
           }}} component={GatheringForm} name="GatheringForm" />
+          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Announcement', headerRight: () => {
+           return (
+            <TouchableOpacity>
+              <Text>POST</Text>
+            </TouchableOpacity>
+           )
+          }}} component={AnnouncementForm} name="AnnouncementForm"/>
         </Stack.Navigator>
   );
 };

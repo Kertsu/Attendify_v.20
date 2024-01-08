@@ -20,7 +20,7 @@ import Manage from "../manage/Manage";
 
 const Tab = createBottomTabNavigator();
 
-const TabGroup = ({ panelRef }) => {
+const TabGroup = ({ panelRef, navigation }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -59,7 +59,7 @@ const TabGroup = ({ panelRef }) => {
     >
       <Tab.Screen name="Gatherings" component={Gatherings} />
       <Tab.Screen name="Announcements" options={{
-        headerRight: () => <AnnouncementTabHeaderRight/>, 
+        headerRight: () => <AnnouncementTabHeaderRight />, 
         headerRightContainerStyle: { justifyContent:'center', alignItems:'center'}
       }} component={Announcements} />
       <Tab.Screen name="Manage" component={Manage} />
@@ -130,8 +130,9 @@ const Home = () => {
 };
 
 const AnnouncementTabHeaderRight = () => {
+  const navigation = useNavigation()
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>navigation.navigate('AnnouncementForm')}>
       <MaterialIcons name="post-add" size={SIZES.xLarge} color={COLORS.textPrimary} />
     </TouchableOpacity>
   )

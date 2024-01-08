@@ -7,7 +7,7 @@ import {styles as Styles} from '../styles/Common.style'
 const Gathering = ({title, date, time}) => {
   return (
     <>
-    <View style={{ backgroundColor: COLORS.white, padding: SIZES.medium, margin:SIZES.small, borderColor:COLORS.outlineGray, borderWidth:1, borderRadius:SIZES.xxxSmall }}>
+    <View style={{ backgroundColor: COLORS.white, padding: SIZES.medium, margin:SIZES.small, borderColor:COLORS.outlineGray, borderWidth:1, borderRadius:SIZES.xxxSmall, marginTop:0 }}>
 
         <View style={{ gap: SIZES.small }}>
           <View
