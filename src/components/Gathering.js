@@ -4,12 +4,12 @@ import { COLORS, SIZES } from "../constants/theme";
 import Separator from "./Separator";
 import {styles as Styles} from '../styles/Common.style'
 
-const Gathering = () => {
+const Gathering = ({title, date, time}) => {
   return (
     <>
-    <View style={{ backgroundColor: COLORS.white, padding: SIZES.small }}>
+    <View style={{ backgroundColor: COLORS.white, padding: SIZES.medium, margin:SIZES.small, borderColor:COLORS.outlineGray, borderWidth:1, borderRadius:SIZES.xxxSmall }}>
 
-        <View style={{ gap: SIZES.medium }}>
+        <View style={{ gap: SIZES.small }}>
           <View
             style={{
               flexDirection: "row",
@@ -31,11 +31,28 @@ const Gathering = () => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={[Styles.btn, {width:'100%',backgroundColor:'green', alignSelf:'center'}]}>
+          <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+            <View style={{gap:SIZES.xxxSmall}}>
+              <Text style={{fontWeight:'bold', fontSize:SIZES.medium}}>{title || 'Live Worship Service'}</Text>
+              <View style={{flexDirection:'row'}}>
+                <Text>{date || '01-08-2024' + ' @ '}</Text>
+                <Text>{time || '3:30 AM'}</Text>
+              </View>
+            </View>
+            <View style={styles.logoContainer}>
+                <Image
+                  style={styles.logo}
+                  source={require("../../assets/images/MCGI_Attendify.png")}
+                />
+              </View>
+            
+          </View>
+          <TouchableOpacity style={[Styles.btn, {width:'100%',backgroundColor:'black', alignSelf:'center'}]}>
             <Text style={Styles.btnText}>Take Attendance</Text>
           </TouchableOpacity>
         </View>
       </View>
+      
 </>
   );
 };
@@ -73,5 +90,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: SIZES.medium,
     color: COLORS.textPrimary,
+  },
+  logoContainer: {
+    width: 40,
+    height: 50,
+    borderRadius: 1000,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logo: {
+    width: "50%",
+    height: "50%",
+    aspectRatio: 1 / 1,
   },
 });

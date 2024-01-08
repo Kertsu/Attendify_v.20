@@ -80,4 +80,13 @@ export const groupAnnouncements = [
     }
 ];
 
+
+export const gatheringSchedule = [
+    {
+        id: 1,
+        title: 'Worship Service',
+        date: '01-13-2024',
+        time: '4:00 AM'
+    }
+]
 // export const groupAnnouncements = []
