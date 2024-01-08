@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity, TouchableHighlight, StyleSheet } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -129,8 +129,18 @@ const UserDetailsScreen = ({ route }) => {
             />
             <Text style={styles.infoText}>Member since 2023</Text>
           </View>
+
+          {!isApproved && <View style={{width:'100%', flexDirection:'row-reverse', paddingVertical:SIZES.large, justifyContent:'space-between', alignItems:'center'}}>
+            <TouchableOpacity style={{paddingHorizontal:SIZES.small, paddingVertical:SIZES.xxSmall, backgroundColor:COLORS.bgPrimary, borderRadius:SIZES.xxxSmall, minWidth:'30%'}}>
+                <Text style={{color:'white', textAlign:'center'}}>Approve</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{paddingHorizontal:SIZES.small, paddingVertical:SIZES.xxSmall, backgroundColor:COLORS.gray, borderRadius:SIZES.xxxSmall, minWidth:'30%'}}>
+                <Text style={{color:COLORS.textPrimary, textAlign:'center'}}>Reject</Text>
+            </TouchableOpacity>
+          </View>}
         </View>
       </View>
+      
     </ScrollView>
   );
 };

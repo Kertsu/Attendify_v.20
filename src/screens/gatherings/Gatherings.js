@@ -11,6 +11,7 @@ import PostButton from "../../components/PostButton";
 import { COLORS, SIZES } from "../../constants/theme";
 import Gathering from "../../components/Gathering";
 import NoData from "../../components/NoData";
+import Chip from "../../components/Chip";
 
 const Gatherings = ({ navigation }) => {
   const [type, setType] = useState("All");
@@ -93,30 +94,6 @@ const Gatherings = ({ navigation }) => {
   );
 };
 
-const Chip = ({ type, handleChipSwitch, active }) => {
-  return (
-    <TouchableOpacity
-      onPress={() => handleChipSwitch(type)}
-      style={{
-        width: "auto",
-        paddingHorizontal: SIZES.small,
-        paddingVertical: SIZES.xxSmall,
-        backgroundColor: active ? "black" : COLORS.gray,
-        borderRadius: SIZES.xxSmall,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text
-        style={{
-          color: active ? "white" : COLORS.textSecondary,
-          fontWeight: "bold",
-        }}
-      >
-        {type}
-      </Text>
-    </TouchableOpacity>
-  );
-};
+
 
 export default Gatherings;
