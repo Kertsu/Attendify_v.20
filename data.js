@@ -217,3 +217,24 @@ export const users =[
       type: "group servant",
     },
   ]
+
+  export const attendances = [
+    {
+      id: 1,
+      date: '2024-01-20',
+      time: '3:30 AM',
+      gatheringSchedule: 
+      {
+        title: 'Worship Service'
+      }
+    },
+    {
+      id: 2,
+      date: '2024-01-20',
+      time: '4:30 PM',
+      gatheringSchedule: 
+      {
+        title: 'Thanks Giving'
+      }
+    }
+  ]

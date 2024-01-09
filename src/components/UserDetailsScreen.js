@@ -1,12 +1,24 @@
-import { View, Text, ScrollView, Image, TouchableOpacity, TouchableHighlight, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+  StyleSheet,
+  Platform,
+  FlatList,
+} from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { styles } from "../screens/profile/Profile.style";
 import { COLORS, SIZES } from "../constants/theme";
+import { attendances } from "../../data";
 
 const UserDetailsScreen = ({ route }) => {
+  const attendances = attendances;
   const { user } = route.params;
   const {
     firstname,
@@ -20,6 +32,7 @@ const UserDetailsScreen = ({ route }) => {
   } = user;
 
   return (
+    <>
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.container}
@@ -27,7 +40,7 @@ const UserDetailsScreen = ({ route }) => {
       <View style={styles.secOne}>
         <View style={styles.avatarContainer}>
           <Image
-            style={[styles.img, { objectFit: "contain" }]}
+            style={[styles.img, { objectFit: Platform.OS == 'android' ? "contain" : 'cover' }]}
             source={{ uri: profile }}
           />
           {/* <TouchableOpacity style={styles.changePfp}>
@@ -47,12 +60,14 @@ const UserDetailsScreen = ({ route }) => {
             <Text style={{ fontSize: SIZES.large }}>
               {firstname + " " + lastname}
             </Text>
-            {isApproved && <MaterialIcons
-              style={{ textAlign: "center" }}
-              name="verified"
-              size={15}
-              color={COLORS.bgPrimary}
-            />}
+            {isApproved && (
+              <MaterialIcons
+                style={{ textAlign: "center" }}
+                name="verified"
+                size={15}
+                color={COLORS.bgPrimary}
+              />
+            )}
           </View>
           <View
             style={{
@@ -130,18 +145,50 @@ const UserDetailsScreen = ({ route }) => {
             <Text style={styles.infoText}>Member since 2023</Text>
           </View>
 
-          {!isApproved && <View style={{width:'100%', flexDirection:'row-reverse', paddingVertical:SIZES.large, justifyContent:'space-between', alignItems:'center'}}>
-            <TouchableOpacity style={{paddingHorizontal:SIZES.small, paddingVertical:SIZES.xxSmall, backgroundColor:COLORS.bgPrimary, borderRadius:SIZES.xxxSmall, minWidth:'30%'}}>
-                <Text style={{color:'white', textAlign:'center'}}>Approve</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{paddingHorizontal:SIZES.small, paddingVertical:SIZES.xxSmall, backgroundColor:COLORS.gray, borderRadius:SIZES.xxxSmall, minWidth:'30%'}}>
-                <Text style={{color:COLORS.textPrimary, textAlign:'center'}}>Reject</Text>
-            </TouchableOpacity>
-          </View>}
+          {!isApproved && (
+            <View
+              style={{
+                width: "100%",
+                flexDirection: "row-reverse",
+                paddingVertical: SIZES.large,
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity
+                style={{
+                  paddingHorizontal: SIZES.small,
+                  paddingVertical: SIZES.xxSmall,
+                  backgroundColor: COLORS.bgPrimary,
+                  borderRadius: SIZES.xxxSmall,
+                  minWidth: "30%",
+                }}
+              >
+                <Text style={{ color: "white", textAlign: "center" }}>
+                  Approve
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  paddingHorizontal: SIZES.small,
+                  paddingVertical: SIZES.xxSmall,
+                  backgroundColor: COLORS.gray,
+                  borderRadius: SIZES.xxxSmall,
+                  minWidth: "30%",
+                }}
+              >
+                <Text
+                  style={{ color: COLORS.textPrimary, textAlign: "center" }}
+                >
+                  Reject
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </View>
-      
     </ScrollView>
+  </>
   );
 };
 

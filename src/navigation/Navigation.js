@@ -52,7 +52,7 @@ const StackGroup = () => {
             </TouchableOpacity>
            )
           }}} component={AnnouncementForm} name="AnnouncementForm"/>
-          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Announcement'}} name="UserDetailsScreen" component={UserDetailsScreen}/>
+          <Stack.Screen options={({route}) => ({presentation:"modal", headerShown:true, headerTitle:`${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="UserDetailsScreen" component={UserDetailsScreen}/>
         </Stack.Navigator>
   );
 };
