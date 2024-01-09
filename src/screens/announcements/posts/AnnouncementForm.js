@@ -5,12 +5,17 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
+  Image,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { COLORS, SIZES } from "../../../constants/theme";
 import { RadioGroup } from "react-native-radio-buttons-group";
 import { styles as Styles } from "../../../styles/Common.style";
-import { MaterialIcons, FontAwesome5 , MaterialCommunityIcons} from "@expo/vector-icons";
+import {
+  MaterialIcons,
+  FontAwesome5,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { SelectList } from "react-native-dropdown-select-list";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -21,16 +26,13 @@ const AnnouncementForm = ({ route }) => {
     { key: "1", value: "General" },
     { key: "2", value: "Group" },
   ];
-  
-  useEffect(() => {
 
-    if(formMode == 'update'){
-      setTitle(announcement.announcementTitle)
-      setContent(announcement.content)
+  useEffect(() => {
+    if (formMode == "update") {
+      setTitle(announcement.announcementTitle);
+      setContent(announcement.content);
     }
-    
-  }, [])
-  
+  }, []);
 
   const [date, setDate] = useState(null);
   const [show, setShow] = useState(false);
@@ -71,6 +73,54 @@ const AnnouncementForm = ({ route }) => {
         gap: SIZES.small,
       }}
     >
+      <View
+        style={{
+          gap: SIZES.small,
+          paddingHorizontal: 10,
+          paddingVertical: 20,
+          backgroundColor: COLORS.white,
+          borderWidth: 1,
+          borderColor: COLORS.outlineGray,
+          borderRadius: SIZES.xxxSmall,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            gap: SIZES.xSmall,
+          }}
+        >
+          <Image
+            style={{
+              width: 70,
+              height: 70,
+              aspectRatio: 1 / 1,
+              objectFit: "cover",
+              borderRadius: 9999,
+            }}
+            source={require("../../../../assets/images/kurtd.jpg")}
+          />
+
+          <View style={{}}>
+            <Text style={{ fontWeight: "bold", fontSize: SIZES.large }}>
+              Kurtd Daniel Bigtas
+            </Text>
+            <Text>kurtddbigtas@gmail.com</Text>
+          </View>
+        </View>
+      </View>
+
+      <View
+        style={{
+          gap: SIZES.small,
+          paddingHorizontal: 10,
+          paddingVertical: 20,
+          backgroundColor: COLORS.white,
+          borderRadius: SIZES.xxxSmall,
+        }}
+      >
       <SelectList
         setSelected={(val) => {
           handleType(val);
@@ -183,18 +233,16 @@ const AnnouncementForm = ({ route }) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-            style={styles.editBtn(formMode)}
-          >
-            <MaterialCommunityIcons
-              name={formMode=='create'? 'pencil':'content-save'}
-              size={24}
-              color={'white'}
-            />
-            <Text style={{ color: 'white', fontWeight: "bold" }}>
-              {formMode == 'create'? 'Post' : 'Save'}
-            </Text>
-          </TouchableOpacity>
+      <TouchableOpacity style={styles.editBtn(formMode)}>
+        <MaterialCommunityIcons
+          name={formMode == "create" ? "pencil" : "content-save"}
+          size={24}
+          color={"white"}
+        />
+        <Text style={{ color: "white", fontWeight: "bold" }}>
+          {formMode == "create" ? "Post" : "Save"}
+        </Text>
+      </TouchableOpacity>
 
       {show && (
         <DateTimePicker
@@ -206,6 +254,7 @@ const AnnouncementForm = ({ route }) => {
           onChange={onChange}
         />
       )}
+      </View>
     </View>
   );
 };
@@ -225,13 +274,13 @@ export const styles = StyleSheet.create({
   editBtn: (formMode) => ({
     alignSelf: "center",
     width: "100%",
-    backgroundColor: formMode  == 'update' ?  'black': COLORS.bgPrimary,
+    backgroundColor: formMode == "update" ? "black" : COLORS.bgPrimary,
     borderRadius: 5,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: 5,
-    paddingVertical: Platform.OS == 'android' ? 5 : 8,
+    paddingVertical: Platform.OS == "android" ? 5 : 8,
     marginTop: 10,
   }),
 });

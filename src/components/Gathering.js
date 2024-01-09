@@ -13,7 +13,7 @@ const Gathering = ({ title, date, time, type, isRecurring, day, navigation }) =>
     <TouchableOpacity >
       <View
         style={{
-          backgroundColor: COLORS.white,
+          backgroundColor: COLORS.gray,
           padding: SIZES.medium,
           margin: SIZES.small,
           borderColor: COLORS.outlineGray,
