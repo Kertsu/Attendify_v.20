@@ -1,11 +1,12 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../constants/theme";
 import { Entypo } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import PostButton from "./PostButton";
 import Separator from "./Separator";
+import { useNavigation } from "@react-navigation/native";
 
 const Announcement = ({
   profile,
@@ -14,8 +15,9 @@ const Announcement = ({
   announcementTitle,
   dateTime,
   venue,
-  content,
+  content
 }) => {
+  const navigation = useNavigation()
   return (
     <>
       <View style={[styles.container]}>
@@ -29,18 +31,19 @@ const Announcement = ({
           <View style={styles.topContainer}>
             <Text style={styles.author}>{author}</Text>
 
-            <View style={styles.timeLogo}>
+            <View style={[styles.timeLogo]}>
               <View>
                 <Text style={{ color: COLORS.darkGray, fontWeight: "bold" }}>
                   {timeAgo}
                 </Text>
               </View>
-              <View style={styles.logoContainer}>
-                <Image
-                  style={styles.logo}
-                  source={require("../../assets/images/MCGI_Attendify.png")}
-                />
-              </View>
+              <TouchableOpacity style={[styles.logoContainer]} onPress={() => navigation.navigate('AnnouncementForm', {formMode: 'update',announcement: {profile,author,timeAgo,announcementTitle,dateTime,venue,content}})}>
+              <MaterialCommunityIcons
+              name="pencil"
+              size={18}
+              color={COLORS.darkerGray}
+            />
+              </TouchableOpacity>
             </View>
           </View>
           {(announcementTitle || dateTime || venue) && (<View style={{ gap: SIZES.xSmall }}>

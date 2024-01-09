@@ -132,7 +132,7 @@ const Home = () => {
 const AnnouncementTabHeaderRight = () => {
   const navigation = useNavigation()
   return (
-    <TouchableOpacity onPress={()=>navigation.navigate('AnnouncementForm')}>
+    <TouchableOpacity onPress={()=>navigation.navigate('AnnouncementForm', {formMode: 'create'})}>
       <MaterialIcons name="post-add" size={SIZES.xLarge} color={COLORS.textPrimary} />
     </TouchableOpacity>
   )

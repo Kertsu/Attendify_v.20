@@ -6,7 +6,7 @@ import Announcement from '../../../components/Announcement'
 import NoData from '../../../components/NoData'
 
 const GeneralAnnouncements = () => {
-  const announcements = [];
+  const announcements = groupAnnouncements.slice(7);
 
   return (
     <>

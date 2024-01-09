@@ -4,21 +4,33 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS, SIZES } from "../../../constants/theme";
 import { RadioGroup } from "react-native-radio-buttons-group";
 import { styles as Styles } from "../../../styles/Common.style";
-import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons, FontAwesome5 , MaterialCommunityIcons} from "@expo/vector-icons";
 import { SelectList } from "react-native-dropdown-select-list";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-const AnnouncementForm = () => {
+const AnnouncementForm = ({ route }) => {
+  const { formMode, announcement } = route.params;
   const types = [
     { key: "1", value: "General" },
     { key: "2", value: "Group" },
   ];
+  
+  useEffect(() => {
+
+    if(formMode == 'update'){
+      setTitle(announcement.announcementTitle)
+      setContent(announcement.content)
+    }
+    
+  }, [])
+  
 
   const [date, setDate] = useState(null);
   const [show, setShow] = useState(false);
@@ -87,10 +99,14 @@ const AnnouncementForm = () => {
       </View>
 
       <View style={[Styles.inputField, { width: "100%" }]}>
-        <MaterialIcons name="text-snippet" size={24} color={COLORS.textPrimary} />
+        <MaterialIcons
+          name="text-snippet"
+          size={24}
+          color={COLORS.textPrimary}
+        />
         <TextInput
-        multiline={true}
-        maxLength={99999999}
+          multiline={true}
+          maxLength={99999999}
           autoComplete="off"
           style={{ width: "90%", paddingVertical: 10 }}
           placeholder="Content"
@@ -132,44 +148,56 @@ const AnnouncementForm = () => {
         </TouchableOpacity>
       </View>
 
-        <View
-          style={[Styles.inputField, { width: "100%", paddingHorizontal: 0 }]}
+      <View
+        style={[Styles.inputField, { width: "100%", paddingHorizontal: 0 }]}
+      >
+        <TouchableOpacity
+          onPress={() => toggleMode("date")}
+          style={{
+            width: "100%",
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+          }}
         >
-          <TouchableOpacity
-            onPress={() => toggleMode("date")}
+          <View
             style={{
-              width: "100%",
-              paddingVertical: 10,
-              paddingHorizontal: 10,
+              flexDirection: "row",
+              gap: 10,
+              alignItems: "center",
+              justifyContent: "flex-start",
             }}
           >
-            <View
+            <FontAwesome5
+              name="calendar"
+              size={24}
+              color={COLORS.textPrimary}
+            />
+            <Text
               style={{
-                flexDirection: "row",
-                gap: 10,
-                alignItems: "center",
-                justifyContent: "flex-start",
+                color: date == null ? COLORS.darkGray : COLORS.textPrimary,
               }}
             >
-              <FontAwesome5
-                name="calendar"
-                size={24}
-                color={COLORS.textPrimary}
-              />
-              <Text
-                style={{
-                  color: date == null ? COLORS.darkGray : COLORS.textPrimary,
-                }}
-              >
-                {date == null ? "Choose date" : date.toLocaleDateString()}
-              </Text>
-            </View>
+              {date == null ? "Choose date" : date.toLocaleDateString()}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity
+            style={styles.editBtn(formMode)}
+          >
+            <MaterialCommunityIcons
+              name={formMode=='create'? 'pencil':'content-save'}
+              size={24}
+              color={'white'}
+            />
+            <Text style={{ color: 'white', fontWeight: "bold" }}>
+              {formMode == 'create'? 'Post' : 'Save'}
+            </Text>
           </TouchableOpacity>
-        </View>
 
       {show && (
         <DateTimePicker
-       
           is24Hour={true}
           value={date || new Date()}
           mode={mode}
@@ -194,4 +222,16 @@ export const styles = StyleSheet.create({
   inputStyle: { color: COLORS.textPrimary, width: "100%", padding: 0 },
   dropdownStyle: { borderColor: COLORS.outlineGray },
   dropdownTextStyle: { color: COLORS.darkGray },
+  editBtn: (formMode) => ({
+    alignSelf: "center",
+    width: "100%",
+    backgroundColor: formMode  == 'update' ?  'black': COLORS.bgPrimary,
+    borderRadius: 5,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: Platform.OS == 'android' ? 5 : 8,
+    marginTop: 10,
+  }),
 });

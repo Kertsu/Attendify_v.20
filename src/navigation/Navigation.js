@@ -46,15 +46,10 @@ const StackGroup = () => {
             </TouchableOpacity>
            )
           }}} component={GatheringForm} name="GatheringForm" />
-          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Announcement', headerRight: () => {
-           return (
-            <TouchableOpacity>
-              <Text>POST</Text>
-            </TouchableOpacity>
-           )
-          }}} component={AnnouncementForm} name="AnnouncementForm"/>
+          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Announcement'}} component={AnnouncementForm} name="AnnouncementForm"/>
           <Stack.Screen options={({route}) => ({presentation:"modal", headerShown:true, headerTitle:`${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="UserDetailsScreen" component={UserDetailsScreen}/>
           <Stack.Screen options={({route}) => ({headerShown:true, headerTitle: `${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="EditProfile" component={EditProfile}/>
+          
         </Stack.Navigator>
   );
 };
