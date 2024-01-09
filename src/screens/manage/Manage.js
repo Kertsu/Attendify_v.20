@@ -20,32 +20,34 @@ const Manage = () => {
     users.filter(createFilter(searchTerm, KEYS_TO_FILTER))
   );
 
-  const handleSearch = (text) =>{
-    setSearchTerm(text)
-    if (text === '') {
-      setType('All');
+  const handleSearch = (text) => {
+    setSearchTerm(text);
+    if (text === "") {
+      setType("All");
       setFilteredUsers(users);
     } else {
       applyFilters(type);
     }
-  }
-  
+  };
+
   const handleUsers = (t) => {
     setType(t);
-    applyFilters(t)
+    applyFilters(t);
+  };
+
+  const applyFilters = (userType) => {
+    let filtered = users.filter((user) =>
+      createFilter(searchTerm, KEYS_TO_FILTER)(user)
+    );
+
+    if (userType === "Approved") {
+      filtered = filtered.filter((user) => user.is_approved === true);
+    } else if (userType === "Unapproved") {
+      filtered = filtered.filter((user) => user.is_approved === false);
     }
 
-    const applyFilters = (userType) => {
-      let filtered = users.filter((user) => createFilter(searchTerm, KEYS_TO_FILTER)(user));
-  
-      if (userType === "Approved") {
-        filtered = filtered.filter((user) => user.is_approved === true);
-      } else if (userType === "Unapproved") {
-        filtered = filtered.filter((user) => user.is_approved === false);
-      }
-  
-      setFilteredUsers(filtered);
-    };
+    setFilteredUsers(filtered);
+  };
 
   return (
     <>
@@ -93,8 +95,8 @@ const Manage = () => {
         </ScrollView>
 
         <FlatList
-  style={{paddingHorizontal:10}}
-ItemSeparatorComponent={() => (
+          style={{ paddingHorizontal: 10 }}
+          ItemSeparatorComponent={() => (
             <View
               style={{
                 width: "100%",

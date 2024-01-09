@@ -17,10 +17,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
 import Manage from "../manage/Manage";
+import { useAuth } from "../../web/AuthService";
 
 const Tab = createBottomTabNavigator();
 
 const TabGroup = ({ panelRef, navigation }) => {
+  const {user} = useAuth();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -46,7 +48,7 @@ const TabGroup = ({ panelRef, navigation }) => {
               <View style={styles.imageContainer({ focused })}>
                 <Image
                   style={styles.image}
-                  source={require("../../../assets/images/kurtd.jpg")}
+                  source={{uri: user.profile}}
                 />
               </View>
             );
