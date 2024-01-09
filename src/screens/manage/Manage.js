@@ -93,12 +93,13 @@ const Manage = () => {
         </ScrollView>
 
         <FlatList
-          ItemSeparatorComponent={() => (
+  style={{paddingHorizontal:10}}
+ItemSeparatorComponent={() => (
             <View
               style={{
                 width: "100%",
-                height: 2,
-                backgroundColor: COLORS.outlineGray,
+                height: SIZES.xxxSmall,
+                backgroundColor: COLORS.white,
               }}
             ></View>
           )}

@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { View, Image, StyleSheet, Text, StatusBar } from "react-native";
+import { View, Image, StyleSheet, Text, StatusBar, Platform, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS, SIZES } from "../../constants/theme";
 import Stepper from "react-native-stepper-ui";
@@ -148,35 +148,37 @@ const SignUp = () => {
   const [active, setActive] = useState(0);
   return (
     <SignUpContext.Provider value={{state}}>
-      <Stepper
-        wrapperStyle={{
-          marginTop: StatusBar.currentHeight,
-          padding: SIZES.xxSmall,
-          flex: 1,
-        }}
-        stepStyle={{ backgroundColor: COLORS.bgPrimary }}
-        active={active}
-        content={components}
-        onBack={() => setActive((p) => p - 1)}
-        onFinish={() => navigation.replace("Verification")}
-        onNext={() =>
-          setActive((p) => {
-            return p + 1;
-          })
-        }
-        showButton={true}
-        buttonStyle={{
-          paddingHorizontal: SIZES.xLarge,
-          borderRadius: SIZES.xxxSmall,
-          paddingVertical: SIZES.small,
-          backgroundColor: COLORS.bgPrimary,
-        }}
-        buttonTextStyle={{
-          color: "white",
-          fontWeight: "bold",
-          textTransform: "uppercase",
-        }}
-      />
+      <SafeAreaView style={{flex:1}}>
+        <Stepper
+          wrapperStyle={{
+            marginTop: Platform.OS == 'android' ? StatusBar.currentHeight : null,
+            padding: SIZES.xxSmall,
+            flex: 1,
+          }}
+          stepStyle={{ backgroundColor: COLORS.bgPrimary }}
+          active={active}
+          content={components}
+          onBack={() => setActive((p) => p - 1)}
+          onFinish={() => navigation.replace("Verification")}
+          onNext={() =>
+            setActive((p) => {
+              return p + 1;
+            })
+          }
+          showButton={true}
+          buttonStyle={{
+            paddingHorizontal: SIZES.xLarge,
+            borderRadius: SIZES.xxxSmall,
+            paddingVertical: SIZES.small,
+            backgroundColor: COLORS.bgPrimary,
+          }}
+          buttonTextStyle={{
+            color: "white",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+          }}
+        />
+      </SafeAreaView>
     
     </SignUpContext.Provider>
   );
