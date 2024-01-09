@@ -29,6 +29,7 @@ const UserDetailsScreen = ({ route }) => {
     isApproved,
     type,
     email,
+    address
   } = user;
 
   return (
@@ -134,6 +135,15 @@ const UserDetailsScreen = ({ route }) => {
               color={COLORS.darkerGray}
             />
             <Text style={styles.infoText}>Cavite City</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <MaterialIcons
+              name="my-location"
+              size={26}
+              color={COLORS.darkerGray}
+            />
+            <Text style={styles.infoText}>{address}</Text>
           </View>
 
           <View style={styles.infoWrapper}>

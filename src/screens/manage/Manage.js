@@ -107,6 +107,7 @@ ItemSeparatorComponent={() => (
           renderItem={({ item }) => (
             <UserCard
               key={item.id}
+              address={item.address}
               firstname={item.firstname}
               lastname={item.lastname}
               localeId={item.locale_id}

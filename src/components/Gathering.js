@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 const Gathering = ({ title, date, time, type, isRecurring, day, navigation }) => {
 
   return (
-    <TouchableOpacity >
+    <TouchableOpacity disabled>
       <View
         style={{
           backgroundColor: COLORS.gray,

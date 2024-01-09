@@ -36,26 +36,26 @@ const Gatherings = ({ navigation }) => {
           },
           {
             isRecurring: "1",
-            type: "Prayer Meeting",
+            type: "Prayer Meeting Batch",
             title: "Live Prayer Meeting",
             day: "Wednesday"
           },
           {
             isRecurring: "1",
-            type: "Prayer Meeting",
-            title: "Prayer Meeting Viewing",
+            type: "Prayer Meeting Batch",
+            title: "Prayer Meeting Viewing #2",
+            day: "Wednesday"
+          },
+          {
+            isRecurring: "1",
+            type: "Prayer Meeting Batch",
+            title: "Prayer Meeting Viewing #3",
             day: "Wednesday"
           },
           {
             isRecurring: "1",
             type: "Prayer Meeting",
-            title: "Prayer Meeting Viewing",
-            day: "Wednesday"
-          },
-          {
-            isRecurring: "1",
-            type: "Prayer Meeting",
-            title: "Prayer Meeting Viewing",
+            title: "Prayer Meeting Viewing #4",
             day: "Wednesday"
           },
           {
@@ -96,19 +96,19 @@ const Gatherings = ({ navigation }) => {
         {
           isRecurring: "1",
           type: "Prayer Meeting",
-          title: "Prayer Meeting Viewing",
+          title: "Prayer Meeting Viewing Batch #2",
           day: "Wednesday"
         },
         {
           isRecurring: "1",
           type: "Prayer Meeting",
-          title: "Prayer Meeting Viewing",
+          title: "Prayer Meeting Viewing Batch #3",
           day: "Wednesday"
         },
         {
           isRecurring: "1",
           type: "Prayer Meeting",
-          title: "Prayer Meeting Viewing",
+          title: "Prayer Meeting Viewing Batch #4",
           day: "Wednesday"
         },]
       case "Other":

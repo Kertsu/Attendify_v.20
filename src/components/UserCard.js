@@ -11,7 +11,7 @@ const UserCard = ({
   churchId,
   isApproved,
   type,
-  email,
+  email,address
 }) => {
   const navigation = useNavigation();
   return (
@@ -37,6 +37,7 @@ const UserCard = ({
             isApproved,
             type,
             email,
+            address
           },
         })
       }
