@@ -16,19 +16,111 @@ import Chip from "../../components/Chip";
 const Gatherings = ({ navigation }) => {
   const [type, setType] = useState("All");
 
-  const types = ["All", "Worship Service", "Thanks Giving", "Prayer Meeting"];
-
+  const types = [
+    "All",
+    "Worship Service",
+    "Thanks Giving",
+    "Prayer Meeting",
+    "Other",
+  ];
 
   const handleData = () => {
     switch (type) {
       case "All":
-        return [1, 2];
+        return [
+          {
+            isRecurring: "1",
+            type: "Worship Service",
+            title: "Live Worship Service",
+            day: "Saturday"
+          },
+          {
+            isRecurring: "1",
+            type: "Prayer Meeting",
+            title: "Live Prayer Meeting",
+            day: "Wednesday"
+          },
+          {
+            isRecurring: "1",
+            type: "Prayer Meeting",
+            title: "Prayer Meeting Viewing",
+            day: "Wednesday"
+          },
+          {
+            isRecurring: "1",
+            type: "Prayer Meeting",
+            title: "Prayer Meeting Viewing",
+            day: "Wednesday"
+          },
+          {
+            isRecurring: "1",
+            type: "Prayer Meeting",
+            title: "Prayer Meeting Viewing",
+            day: "Wednesday"
+          },
+          {
+            isRecurring: "1",
+            type: "Thanks Giving",
+            title: "Thanksgiving of God's people",
+            day: "Saturday"
+          },
+          {
+            isRecurring: "2",
+            type: "International Youth Convention",
+            title: "International Youth Convention 2024",
+            time: "4:30 PM",
+            date: "2024-01-28",
+          },
+        ];
       case "Worship Service":
-        return [1, 2, 3];
+        return [{
+          isRecurring: "1",
+          type: "Worship Service",
+          title: "Live Worship Service",
+          day: "Saturday"
+        }]
       case "Thanks Giving":
-        return [1, 2, 3, 4];
+        return [{
+          isRecurring: "1",
+          type: "Thanks Giving",
+          title: "Thanksgiving of God's people",
+          day: "Saturday"
+        },]
       case "Prayer Meeting":
-        return [1, 2];
+        return [{
+          isRecurring: "1",
+          type: "Prayer Meeting",
+          title: "Live Prayer Meeting",
+          day: "Wednesday"
+        },
+        {
+          isRecurring: "1",
+          type: "Prayer Meeting",
+          title: "Prayer Meeting Viewing",
+          day: "Wednesday"
+        },
+        {
+          isRecurring: "1",
+          type: "Prayer Meeting",
+          title: "Prayer Meeting Viewing",
+          day: "Wednesday"
+        },
+        {
+          isRecurring: "1",
+          type: "Prayer Meeting",
+          title: "Prayer Meeting Viewing",
+          day: "Wednesday"
+        },]
+      case "Other":
+        return [
+          {
+            isRecurring: "2",
+            type: "International Youth Convention",
+            title: "International Youth Convention 2024",
+            time: "4:30 PM",
+            date: "2024-01-28",
+          },
+        ];
       default:
         return;
     }
@@ -85,7 +177,17 @@ const Gatherings = ({ navigation }) => {
         <FlatList
           // data={handleData()}
           data={handleData()}
-          renderItem={Gathering}
+          renderItem={({ item }) => (
+            <Gathering
+              isRecurring={item.isRecurring}
+              type={item.type}
+              title={item.title}
+              time={item.time}
+              date={item.date}
+              navigation={navigation}
+              day={item.day || undefined}
+            />
+          )}
         />
       </View>
 
@@ -93,7 +195,5 @@ const Gatherings = ({ navigation }) => {
     </>
   );
 };
-
-
 
 export default Gatherings;

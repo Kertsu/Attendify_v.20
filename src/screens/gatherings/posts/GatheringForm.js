@@ -8,16 +8,31 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { COLORS, SIZES } from "../../../constants/theme";
 import { RadioGroup } from "react-native-radio-buttons-group";
 import { styles as Styles } from "../../../styles/Common.style";
-import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { SelectList } from "react-native-dropdown-select-list";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-const GatheringForm = () => {
+const GatheringForm = ({route}) => {
+  const {formMode, gathering} = route.params;
+
+
+  useEffect(() => {
+
+    if(formMode == 'update'){
+      setIsRecurring(gathering.isRecurring)
+      setType(gathering.type)
+      setTitle(gathering.title);
+      setDate(new Date(gathering.date))
+      setTime(gathering.time)
+      setDay(gathering.day)
+    }
+    
+  }, [])
   const radioButtons = useMemo(
     () => [
       {
@@ -48,6 +63,8 @@ const GatheringForm = () => {
     { key: "1", value: "Worship Service" },
     { key: "2", value: "Prayer Meeting" },
   ];
+
+  
 
   const [date, setDate] = useState(null);
   const [show, setShow] = useState(false);
@@ -90,7 +107,7 @@ const GatheringForm = () => {
         gap: SIZES.small,
       }}
     >
-      <View
+      {formMode != 'update' && <View
         style={{
           flexDirection: "row",
           gap: SIZES.xxSmall,
@@ -105,7 +122,7 @@ const GatheringForm = () => {
           onPress={setIsRecurring}
           selectedId={isRecurring}
         />
-      </View>
+      </View>}
 
       <SelectList
         setSelected={(val) => {
@@ -219,6 +236,18 @@ const GatheringForm = () => {
           </TouchableOpacity>
         </View>
       )}
+       <TouchableOpacity
+            style={styles.editBtn(formMode)}
+          >
+            <MaterialCommunityIcons
+              name={formMode=='create'? 'pencil':'content-save'}
+              size={24}
+              color={'white'}
+            />
+            <Text style={{ color: 'white', fontWeight: "bold" }}>
+              {formMode == 'create'? 'Post' : 'Save'}
+            </Text>
+          </TouchableOpacity>
 
       {show && (
         <DateTimePicker
@@ -246,4 +275,17 @@ export const styles = StyleSheet.create({
   inputStyle: { color: COLORS.textPrimary, width: "100%", padding: 0 },
   dropdownStyle: { borderColor: COLORS.outlineGray },
   dropdownTextStyle: { color: COLORS.darkGray },
+ 
+editBtn: (formMode) => ({
+    alignSelf: "center",
+    width: "100%",
+    backgroundColor: formMode  == 'update' ?  'black': COLORS.bgPrimary,
+    borderRadius: 5,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: Platform.OS == 'android' ? 5 : 8,
+    marginTop: 10,
+  }),
 });

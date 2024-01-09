@@ -39,13 +39,7 @@ const StackGroup = () => {
           <Stack.Screen component={Login} name="Login" />
           <Stack.Screen component={Verification} name="Verification" />
           <Stack.Screen component={Home} name="Home" />
-          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Gathering', headerRight: () => {
-           return (
-            <TouchableOpacity>
-              <Text>POST</Text>
-            </TouchableOpacity>
-           )
-          }}} component={GatheringForm} name="GatheringForm" />
+          <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Gathering'}} component={GatheringForm} name="GatheringForm" />
           <Stack.Screen options={{presentation:"modal", headerShown:true, headerTitle:'Announcement'}} component={AnnouncementForm} name="AnnouncementForm"/>
           <Stack.Screen options={({route}) => ({presentation:"modal", headerShown:true, headerTitle:`${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="UserDetailsScreen" component={UserDetailsScreen}/>
           <Stack.Screen options={({route}) => ({headerShown:true, headerTitle: `${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="EditProfile" component={EditProfile}/>

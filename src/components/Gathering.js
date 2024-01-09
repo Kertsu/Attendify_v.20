@@ -2,59 +2,112 @@ import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { COLORS, SIZES } from "../constants/theme";
 import Separator from "./Separator";
-import {styles as Styles} from '../styles/Common.style'
+import { styles as Styles } from "../styles/Common.style";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const Gathering = ({title, date, time}) => {
+
+const Gathering = ({ title, date, time, type, isRecurring, day, navigation }) => {
+
   return (
-    <>
-    <View style={{ backgroundColor: COLORS.white, padding: SIZES.medium, margin:SIZES.small, borderColor:COLORS.outlineGray, borderWidth:1, borderRadius:SIZES.xxxSmall, marginTop:0 }}>
-
+    <TouchableOpacity >
+      <View
+        style={{
+          backgroundColor: COLORS.white,
+          padding: SIZES.medium,
+          margin: SIZES.small,
+          borderColor: COLORS.outlineGray,
+          borderWidth: 1,
+          borderRadius: SIZES.xxxSmall,
+          marginTop: 0,
+        }}
+      >
         <View style={{ gap: SIZES.small }}>
           <View
             style={{
               flexDirection: "row",
               gap: SIZES.small,
-              justifyContent: "flex-start",
+              justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <View style={[styles.avatarContainer]}>
-              <Image
-                style={styles.avatar}
-                source={require("../../assets/images/kurtd.jpg")}
-              />
-            </View>
-            <View style={{ justifyContent: "center", alignItems: "flex-start" }}>
-              <Text style={styles.author}>Kurtd Daniel Bigtas</Text>
-              <Text style={{ color: COLORS.darkerGray, fontSize: SIZES.small }}>
-                October 11 at 7:28 PM
-              </Text>
-            </View>
-          </View>
-          <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-            <View style={{gap:SIZES.xxxSmall}}>
-              <Text style={{fontWeight:'bold', fontSize:SIZES.medium}}>{title || 'Live Worship Service'}</Text>
-              <View style={{flexDirection:'row'}}>
-                <Text>{date || '01-08-2024' + ' @ '}</Text>
-                <Text>{time || '3:30 AM'}</Text>
-              </View>
-            </View>
-            <View style={styles.logoContainer}>
+            <View
+              style={{
+                flexDirection: "row",
+                gap: SIZES.small,
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <View style={[styles.avatarContainer]}>
                 <Image
-                  style={styles.logo}
-                  source={require("../../assets/images/MCGI_Attendify.png")}
+                  style={styles.avatar}
+                  source={require("../../assets/images/kurtd.jpg")}
                 />
               </View>
-            
+              <View
+                style={{ justifyContent: "center", alignItems: "flex-start" }}
+              >
+                <Text style={styles.author}>Kurtd Daniel Bigtas</Text>
+                <Text
+                  style={{ color: COLORS.darkerGray, fontSize: SIZES.small }}
+                >
+                  October 11 at 7:28 PM
+                </Text>
+              </View>
+            </View>
+
+            <TouchableOpacity
+              style={[styles.logoContainer]}
+              onPress={() =>
+                navigation.navigate("GatheringForm", {
+                  formMode: "update",
+                  gathering: { title, date, time, type, isRecurring, day },
+                })
+              }
+            >
+              <MaterialCommunityIcons
+                name="pencil"
+                size={18}
+                color={COLORS.darkerGray}
+              />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={[Styles.btn, {width:'100%',backgroundColor:'black', alignSelf:'center'}]}>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View style={{ gap: SIZES.xxxSmall }}>
+              <Text style={{ fontWeight: "bold", fontSize: SIZES.medium }}>
+                {title }
+              </Text>
+              {isRecurring == "2" && <View style={{ flexDirection: "row" }}>
+                <Text>{new Date(date).toLocaleDateString() + ' @ '}</Text>
+                <Text>{time }</Text>
+              </View>}
+              {
+                isRecurring == "1" && (
+                  <View style={{ flexDirection: "row" }}>
+                <Text>{day}</Text>
+                
+              </View>
+                )
+              }
+            </View>
+          </View>
+          <TouchableOpacity
+            style={[
+              Styles.btn,
+              { width: "100%", backgroundColor: "black", alignSelf: "center" },
+            ]}
+          >
             <Text style={Styles.btnText}>Take Attendance</Text>
           </TouchableOpacity>
         </View>
       </View>
-      
-</>
+    </TouchableOpacity>
   );
+
+
 };
 
 export default Gathering;

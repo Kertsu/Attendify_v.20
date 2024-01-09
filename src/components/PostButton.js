@@ -20,7 +20,7 @@ const PostButton = ({navigation}) => {
       top:'87%'
     }}
 
-    onPress={()=> navigation.navigate('GatheringForm')}
+    onPress={()=> navigation.navigate('GatheringForm', {formMode: 'create'})}
   >
     <MaterialCommunityIcons
       name="pen-plus"
