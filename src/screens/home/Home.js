@@ -61,10 +61,10 @@ const TabGroup = ({ panelRef, navigation }) => {
     >
       <Tab.Screen name="Gatherings" component={Gatherings} />
       <Tab.Screen name="Announcements" options={{
-        headerRight: () => <AnnouncementTabHeaderRight />, 
+        headerRight: () =>  user.type == 'secretary' ? <AnnouncementTabHeaderRight /> : null, 
         headerRightContainerStyle: { justifyContent:'center', alignItems:'center'}
       }} component={Announcements} />
-      <Tab.Screen name="Manage" component={Manage} />
+      {user.type == 'secretary' && <Tab.Screen name="Manage" component={Manage} />}
       <Tab.Screen
         name="Profile"
         options={{ headerTitle: () => <ProfileHeader panelRef={panelRef} /> }}

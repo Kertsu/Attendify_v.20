@@ -5,9 +5,12 @@ import Separator from "./Separator";
 import { styles as Styles } from "../styles/Common.style";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../web/AuthService";
 
 
 const Gathering = ({ title, date, time, type, isRecurring, day, navigation }) => {
+
+  const {user} = useAuth();
 
   return (
     <TouchableOpacity disabled>
@@ -57,7 +60,7 @@ const Gathering = ({ title, date, time, type, isRecurring, day, navigation }) =>
               </View>
             </View>
 
-            <TouchableOpacity
+            {user.type == 'secretary' && <TouchableOpacity
               style={[styles.logoContainer]}
               onPress={() =>
                 navigation.navigate("GatheringForm", {
@@ -71,7 +74,7 @@ const Gathering = ({ title, date, time, type, isRecurring, day, navigation }) =>
                 size={18}
                 color={COLORS.darkerGray}
               />
-            </TouchableOpacity>
+            </TouchableOpacity>}
           </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}

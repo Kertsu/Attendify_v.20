@@ -16,7 +16,6 @@ export const AuthService = ({ children }) => {
     locale_id: 1,
     group_id: 201,
     is_approved: true,
-    type: "secretary",
     address: "123 Main Street, Cityville, Stateville, Countryland, 12345"
   });
 

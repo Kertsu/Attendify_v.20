@@ -7,6 +7,7 @@ import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import PostButton from "./PostButton";
 import Separator from "./Separator";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../web/AuthService";
 
 const Announcement = ({
   profile,
@@ -17,6 +18,7 @@ const Announcement = ({
   venue,
   content
 }) => {
+  const {user} = useAuth();
   const navigation = useNavigation()
   return (
     <>
@@ -37,13 +39,13 @@ const Announcement = ({
                   {timeAgo}
                 </Text>
               </View>
-              <TouchableOpacity style={[styles.logoContainer]} onPress={() => navigation.navigate('AnnouncementForm', {formMode: 'update',announcement: {profile,author,timeAgo,announcementTitle,dateTime,venue,content}})}>
+              {user.type == 'secretary' && <TouchableOpacity style={[styles.logoContainer]} onPress={() => navigation.navigate('AnnouncementForm', {formMode: 'update',announcement: {profile,author,timeAgo,announcementTitle,dateTime,venue,content}})}>
               <MaterialCommunityIcons
               name="pencil"
               size={18}
               color={COLORS.darkerGray}
             />
-              </TouchableOpacity>
+              </TouchableOpacity>}
             </View>
           </View>
           {(announcementTitle || dateTime || venue) && (<View style={{ gap: SIZES.xSmall }}>

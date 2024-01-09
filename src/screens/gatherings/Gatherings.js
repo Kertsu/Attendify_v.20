@@ -12,8 +12,11 @@ import { COLORS, SIZES } from "../../constants/theme";
 import Gathering from "../../components/Gathering";
 import NoData from "../../components/NoData";
 import Chip from "../../components/Chip";
+import { useAuth } from "../../web/AuthService";
 
 const Gatherings = ({ navigation }) => {
+
+  const {user} = useAuth();
   const [type, setType] = useState("All");
 
   const types = [
@@ -191,7 +194,7 @@ const Gatherings = ({ navigation }) => {
         />
       </View>
 
-      <PostButton navigation={navigation} />
+      {user.type == 'secretary' && <PostButton navigation={navigation} />}
     </>
   );
 };
