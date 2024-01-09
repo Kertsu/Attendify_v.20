@@ -7,6 +7,7 @@ import GatheringForm from "../screens/gatherings/posts/GatheringForm";
 import { TouchableOpacity, Text } from "react-native";
 import AnnouncementForm from "../screens/announcements/posts/AnnouncementForm";
 import UserDetailsScreen from "../components/UserDetailsScreen";
+import EditProfile from "../screens/profile/EditProfile";
 const Stack = createNativeStackNavigator();
 
 const StackGroup = () => {
@@ -53,6 +54,7 @@ const StackGroup = () => {
            )
           }}} component={AnnouncementForm} name="AnnouncementForm"/>
           <Stack.Screen options={({route}) => ({presentation:"modal", headerShown:true, headerTitle:`${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="UserDetailsScreen" component={UserDetailsScreen}/>
+          <Stack.Screen options={({route}) => ({headerShown:true, headerTitle: `${route.params?.user.firstname} ${route.params?.user.lastname}`})} name="EditProfile" component={EditProfile}/>
         </Stack.Navigator>
   );
 };
